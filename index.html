@@ -1,700 +1,398 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-BR" class="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#030712">
-    <meta name="google-site-verification" content="qpnBaKz-lYORVoP0ms6eCvWrVKABzDaG8cTTGa7Ma6g" />
-    <title>Nano 01 Produções & Música // Command Center VIP</title>
-    <meta name="description" content="Portal oficial da Nano 01 Produções e Nano 01 Música. Ouça o catálogo completo com faixas dos artistas independentes Nano 01 e Nano D.">
-    <meta name="keywords" content="Nano 01 Produções, Nano 01 Música, Nano 01, Nano D, Apple Music, Spotify, TikTok, Instagram">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Nano 01 Produções & Música - Command Center">
-    <meta property="og:description" content="Explore o catálogo completo de Nano 01 e Nano D. pela Nano 01 Produções.">
-    <meta property="og:type" content="music.album">
-    <meta property="og:url" content="https://davimatos54321-a11y.github.io/nano01-index/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nano 01 // Hub Oficial & Estúdio Social</title>
 
-    <!-- Schema.org para o Google Knowledge Graph -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "MusicOrganization",
-                "name": "Nano 01 Produções",
-                "alternateName": ["Nano 01 Música", "Nano 01 Produções Musicais"],
-                "url": "https://davimatos54321-a11y.github.io/nano01-index/",
-                "founder": {
-                    "@type": "Person",
-                    "name": "Nano 01",
-                    "alternateName": ["Nano01", "Nano D."]
-                },
-                "sameAs": [
-                    "https://www.instagram.com/nano01oficial",
-                    "https://www.tiktok.com/@nano01oficial",
-                    "https://www.youtube.com/@Nano01oficial",
-                    "https://www.facebook.com/Nano01oficial"
-                ]
-            }
-        ]
+<!-- HEADERS DE SEGURANÇA MÁXIMA -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.jsdelivr.net https://cdn.tailwindcss.com https://cdnjs.cloudflare.com https://fonts.googleapis.com https://fonts.gstatic.com *.supabase.co; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: ; connect-src 'self' https://*.supabase.co;">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+<!-- SUPABASE CLIENT -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        nexus: {
+          50: '#f0fdf4',
+          500: '#10b981',
+          600: '#059669',
+          900: '#064e3b',
+          dark: '#090d16',
+          card: '#111827',
+          border: '#1f2937'
+        }
+      }
     }
-    </script>
-
-    <!-- Estilos Nível Ouro (Command Center Theme) -->
-    <style>
-        :root {
-            --bg-color: #030712;
-            --panel-bg: #0b0f19;
-            --accent-cyan: #06b6d4;
-            --accent-green: #10b981;
-            --accent-pink: #ff3366;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --border-color: #1f2937;
-        }
-
-        * {
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            text-align: center;
-            margin: 0;
-            padding: 15px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            user-select: none;
-        }
-
-        .container {
-            max-width: 480px;
-            width: 100%;
-        }
-
-        header {
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 12px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        h1 { 
-            font-size: 1.1rem; 
-            letter-spacing: 2px; 
-            color: var(--accent-cyan); 
-            margin: 0;
-            text-align: left;
-        }
-
-        .system-status {
-            font-size: 0.65rem;
-            color: var(--accent-green);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            letter-spacing: 1px;
-        }
-
-        .pulse {
-            width: 6px;
-            height: 6px;
-            background-color: var(--accent-green);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--accent-green);
-            animation: pulse-animation 2s infinite;
-        }
-
-        @keyframes pulse-animation {
-            0% { transform: scale(0.95); opacity: 0.8; }
-            50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 12px var(--accent-green); }
-            100% { transform: scale(0.95); opacity: 0.8; }
-        }
-
-        /* Bloco de Crescimento: Social Unlock & Push Alerts VIP */
-        .growth-box {
-            background: linear-gradient(135deg, #0b0f19, #1b0033);
-            border: 1px solid var(--accent-pink);
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 0 20px rgba(255, 51, 102, 0.2);
-        }
-
-        .growth-title {
-            color: var(--accent-pink);
-            font-size: 0.85rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-
-        .growth-desc {
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            margin-bottom: 12px;
-        }
-
-        .btn-unlock {
-            background: transparent;
-            border: 1px solid var(--accent-pink);
-            color: var(--accent-pink);
-            padding: 10px;
-            width: 100%;
-            font-weight: bold;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            transition: 0.3s;
-        }
-        .btn-unlock:hover { background: var(--accent-pink); color: var(--bg-color); box-shadow: 0 0 12px rgba(255,51,102,0.4); }
-        .btn-unlock.verified { border-color: var(--accent-green); color: var(--accent-green); }
-
-        .ai-voice-box {
-            background: var(--panel-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 10px;
-            margin-bottom: 15px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .ai-voice-box:hover { border-color: var(--accent-cyan); }
-
-        .ai-voice-text {
-            color: var(--accent-cyan);
-            font-weight: bold;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .search-container {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .search-input {
-            flex: 1;
-            background: var(--panel-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 10px 14px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            outline: none;
-        }
-        .search-input:focus { border-color: var(--accent-cyan); }
-        .search-input::placeholder { color: var(--text-muted); }
-
-        .search-btn {
-            background-color: transparent;
-            border: 1px solid var(--accent-cyan);
-            color: var(--accent-cyan);
-            padding: 0 16px;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .search-btn:hover { background: var(--accent-cyan); color: var(--bg-color); }
-
-        .panel {
-            background-color: var(--panel-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .track-counter {
-            font-size: 0.75rem;
-            color: var(--accent-green);
-            margin-bottom: 12px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .tech-bg-container {
-            position: relative;
-            width: 100%;
-            background: radial-gradient(circle at center, #121826 0%, #080b12 70%, #030712 100%);
-            border-radius: 6px;
-            overflow: hidden;
-            margin-bottom: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--border-color);
-            padding: 20px 10px;
-        }
-
-        .tech-watermark {
-            font-size: 1rem;
-            font-weight: bold;
-            color: var(--accent-cyan);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 4px;
-        }
-
-        .tech-subtext {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-        }
-
-        .preview-audio {
-            width: 100%;
-            max-width: 260px;
-            height: 32px;
-            margin-bottom: 12px;
-            filter: invert(1);
-        }
-
-        .platform-trigger-btn {
-            background: transparent;
-            color: var(--accent-green);
-            border: 1px solid var(--accent-green);
-            padding: 8px 14px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.2s;
-        }
-        .platform-trigger-btn:hover {
-            background: var(--accent-green);
-            color: var(--bg-color);
-            box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
-        }
-
-        .track-title {
-            font-size: 1rem;
-            font-weight: bold;
-            color: var(--text-main);
-            margin-bottom: 4px;
-        }
-
-        .track-artist {
-            font-size: 0.8rem;
-            color: var(--accent-cyan);
-            margin-bottom: 15px;
-        }
-
-        .player-controls {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .ctrl-btn {
-            background: transparent;
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.2s;
-        }
-        .ctrl-btn:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
-        
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(3, 7, 18, 0.9);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .modal-content {
-            background: var(--panel-bg);
-            border: 1px solid var(--accent-cyan);
-            border-radius: 8px;
-            padding: 25px;
-            width: 100%;
-            max-width: 360px;
-            text-align: center;
-            box-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
-        }
-        .modal-title {
-            font-size: 0.95rem;
-            color: var(--accent-cyan);
-            margin-bottom: 15px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        .platform-btn {
-            display: block;
-            background: transparent;
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-            padding: 10px;
-            margin: 8px 0;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.2s;
-        }
-        .platform-btn:hover { border-color: var(--accent-green); color: var(--accent-green); background: rgba(16,185,129,0.05); }
-        
-        .close-modal {
-            background: transparent;
-            color: var(--text-muted);
-            border: 1px solid var(--border-color);
-            padding: 8px 16px;
-            border-radius: 4px;
-            margin-top: 15px;
-            cursor: pointer;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-        }
-        .close-modal:hover { color: var(--text-main); border-color: var(--text-main); }
-
-        .links-container {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-        .btn-link {
-            background-color: var(--panel-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 8px 12px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.2s;
-        }
-        .btn-link:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
-
-        footer {
-            margin-top: 30px;
-            color: var(--text-muted);
-            font-size: 0.7rem;
-            letter-spacing: 1px;
-        }
-    </style>
+  }
+}
+</script>
+<!-- FontAwesome for Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', sans-serif; padding-bottom: 90px; }
+  .code-font { font-family: 'JetBrains Mono', monospace; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #090d16; }
+  ::-webkit-scrollbar-thumb { background: #374151; border-radius: 3px; }
+</style>
 </head>
-<body>
+<body class="bg-nexus-dark text-gray-100 min-h-screen flex flex-col selection:bg-nexus-500 selection:text-white">
 
-<div class="container">
-    <header>
-        <h1>NANO 01</h1>
-        <div class="system-status">
-            <div class="pulse"></div>
-            SYSTEM ONLINE
+<!-- HEADER -->
+<header class="border-b border-nexus-border bg-nexus-card/85 backdrop-blur sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-nexus-600 to-emerald-400 flex items-center justify-center shadow-lg shadow-emerald-900/40">
+        <i class="fa-solid fa-headphones-simple text-white text-lg"></i>
+      </div>
+      <div>
+        <h1 class="font-bold text-lg tracking-tight bg-gradient-to-r from-white via-gray-200 to-emerald-400 bg-clip-text text-transparent">NANO 01</h1>
+        <p class="text-xs text-gray-400">Official Catalog & Creator Studio</p>
+      </div>
+    </div>
+    <div class="flex items-center space-x-2 overflow-x-auto py-2">
+      <button onclick="switchTab('home')" id="btn-tab-home" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 transition-all">Central</button>
+      <button onclick="switchTab('creator')" id="btn-tab-creator" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-gray-800 text-gray-300 hover:bg-gray-700 transition-all"><i class="fa-solid fa-palette mr-1 text-emerald-400"></i> Estúdio Social</button>
+      <button onclick="switchTab('community')" id="btn-tab-community" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-gray-800 text-gray-300 hover:bg-gray-700 transition-all"><i class="fa-solid fa-users mr-1 text-emerald-400"></i> Mural</button>
+    </div>
+  </div>
+</header>
+
+<main class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+  <!-- ABA 1: CENTRAL E CATÁLOGO -->
+  <div id="tab-home" class="space-y-6">
+    <div class="bg-nexus-card border border-nexus-border rounded-2xl p-6 md:p-8 shadow-2xl space-y-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between pb-6 border-b border-gray-800 gap-4">
+        <div>
+          <h2 class="text-2xl font-bold text-white flex items-center">
+            <i class="fa-solid fa-radio mr-3 text-emerald-400 animate-pulse"></i> Catálogo Oficial & Hub
+          </h2>
+          <p class="text-sm text-gray-400 mt-1">Explore os lançamentos independentes e crie conteúdo para redes sociais.</p>
         </div>
-    </header>
+        <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-500/25">Secure SSL // Active</span>
+      </div>
 
-    <!-- Bloco VIP Seguro contra Pop-up Blockers -->
-    <div class="growth-box">
-        <div class="growth-title">⚡ Área VIP // Social Hub & Push</div>
-        <div class="growth-desc">Ative os alertas e escolha onde deseja seguir e ouvir os lançamentos oficiais.</div>
-        <button class="btn-unlock" id="unlockBtn" onclick="abrirHubVIP()">1. Ativar Alertas & Escolher Plataforma</button>
-    </div>
-
-    <div class="ai-voice-box" onclick="startAIVoiceSearch()">
-        <span class="ai-voice-text" id="aiVoicePrompt">🎙️ Pesquisa por Voz (Nome da Música)</span>
-    </div>
-
-    <div class="search-container">
-        <input type="text" id="searchInput" class="search-input" placeholder="Pesquisar no catálogo..." onkeypress="handleSearch(event)">
-        <button class="search-btn" onclick="performAISearch()">BUSCAR</button>
-    </div>
-
-    <div class="panel">
-        <div id="trackCounter" class="track-counter">FAIXA 1 DE 60</div>
-        
-        <div class="tech-bg-container">
-            <div class="tech-watermark">NANO 01 MÚSICA</div>
-            <div class="tech-subtext">[ SECURE PREVIEW HUB ]</div>
-            
-            <audio id="audioPreview" class="preview-audio" controls>
-                O seu navegador não suporta áudio.
-            </audio>
-
-            <button class="platform-trigger-btn" onclick="openPlatformModal()">🌐 Aceder HyperFollow / Plataformas</button>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-gray-950 border border-gray-800 rounded-2xl p-6">
+        <!-- Avatar / Foto Oficial -->
+        <div class="lg:col-span-5 flex flex-col items-center justify-center space-y-3">
+          <div class="relative w-full h-64 rounded-2xl overflow-hidden border-2 border-emerald-500/60 shadow-2xl shadow-emerald-950/80 bg-gray-900 group">
+            <img src="1000217500.jpg" alt="Nano 01 Oficial" class="w-full h-full object-cover object-center filter contrast-125 brightness-95">
+            <div class="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px] pointer-events-none opacity-40"></div>
+            <div class="absolute bottom-3 left-3 right-3 flex justify-between items-center">
+              <span class="text-[10px] font-mono tracking-widest text-emerald-300 bg-gray-950/90 px-2.5 py-1 rounded border border-emerald-500/40">
+                <i class="fa-solid fa-circle text-[8px] text-emerald-400 animate-ping mr-1"></i> NANO 01 STUDIO
+              </span>
+            </div>
+          </div>
         </div>
-        
-        <div id="trackTitle" class="track-title">A carregar...</div>
-        <div id="trackArtist" class="track-artist">Nano01</div>
 
-        <div class="player-controls">
-            <button class="ctrl-btn" onclick="prevTrack()">◀ Anterior</button>
-            <button class="ctrl-btn" onclick="nextTrack()">Seguinte ▶</button>
+        <!-- Busca e Destaques -->
+        <div class="lg:col-span-7 space-y-4">
+          <div class="bg-gray-900 border border-gray-800 rounded-xl p-4 text-sm text-gray-200 code-font shadow-inner">
+            <p id="avatar-dialogue" class="text-emerald-400 leading-relaxed">
+              <span class="animate-pulse">Bem-vindo ao quartel-general do som independente. Busque ou crie seu card!</span>
+            </p>
+          </div>
+
+          <!-- Barra de Pesquisa -->
+          <div class="flex items-center space-x-2 bg-gray-900 border border-gray-700 rounded-xl p-2">
+            <i class="fa-solid fa-magnifying-glass text-emerald-400 pl-2"></i>
+            <input type="text" id="music-search-input" placeholder="Buscar música no catálogo..." class="flex-1 bg-transparent border-none text-sm text-white focus:outline-none px-2" onkeydown="if(event.key === 'Enter') searchCatalog()">
+            <button onclick="searchCatalog()" class="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium transition-all">Buscar</button>
+          </div>
+
+          <div id="search-results" class="grid grid-cols-1 sm:grid-cols-2 gap-2"></div>
+
+          <div class="flex flex-col sm:flex-row gap-2 pt-2">
+            <button onclick="switchTab('creator')" class="flex-1 p-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs shadow-lg transition-all flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <span>Criar Card Personalizado para Redes</span>
+            </button>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 
-    <!-- Modal do Hub VIP (Evita bloqueadores de pop-up e inclui Apple Music) -->
-    <div id="vipHubModal" class="modal-overlay" onclick="closeVipModalOnOutside(event)">
-        <div class="modal-content">
-            <div class="modal-title">Escolha a sua plataforma</div>
-            <a class="platform-btn" href="https://open.spotify.com/artist/nano01" target="_blank">🟢 Seguir no Spotify</a>
-            <a class="platform-btn" href="https://music.apple.com" target="_blank">🍎 Ouvir no Apple Music</a>
-            <a class="platform-btn" href="https://www.youtube.com/@Nano01oficial" target="_blank">🔴 YouTube Music (Canal)</a>
-            <a class="platform-btn" href="https://www.instagram.com/nano01oficial" target="_blank">📸 Seguir no Instagram</a>
-            <a class="platform-btn" href="https://www.tiktok.com/@nano01oficial" target="_blank">⚡ Seguir no TikTok</a>
-            <button class="close-modal" onclick="closeVipModal()">Fechar & Concluir</button>
+  <!-- ABA 2: ESTÚDIO DE CRIAÇÃO SOCIAL -->
+  <div id="tab-creator" class="space-y-6 hidden">
+    <div class="bg-nexus-card border border-nexus-border rounded-2xl p-6 md:p-8 shadow-2xl space-y-6">
+      <div class="pb-4 border-b border-gray-800">
+        <h2 class="text-2xl font-bold text-white flex items-center">
+          <i class="fa-solid fa-palette mr-3 text-emerald-400"></i> Estúdio de Criação & Compartilhamento
+        </h2>
+        <p class="text-sm text-gray-400 mt-1">Gere seu card com sua faixa favorita e compartilhe instantaneamente.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        <div class="lg:col-span-6 space-y-4 bg-gray-950 p-6 rounded-2xl border border-gray-800">
+          <div class="space-y-2">
+            <label class="block text-xs font-medium text-gray-400">Seu Apelido / Nome:</label>
+            <input type="text" id="creator-name" placeholder="Ex: Fã_Astronauta" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-3 text-sm text-white" oninput="previewCreationCard()">
+          </div>
+
+          <div class="space-y-2">
+            <label class="block text-xs font-medium text-gray-400">Escolha a Música:</label>
+            <select id="creator-song" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-3 text-sm text-white" onchange="previewCreationCard()">
+              <option value="Questão de tempo">Questão de tempo</option>
+              <option value="CHORA NO 22 BEBÊ">CHORA NO 22 BEBÊ</option>
+              <option value="O papagaio bêbado e o jupará">O papagaio bêbado e o jupará</option>
+              <option value="Echoes of the Street">Echoes of the Street</option>
+            </select>
+          </div>
+
+          <div class="space-y-2 pt-2">
+            <label class="block text-xs font-medium text-emerald-400">Compartilhar Direto:</label>
+            <div class="grid grid-cols-2 gap-2">
+              <button onclick="shareToSocial('whatsapp')" class="py-2.5 px-3 bg-green-600/20 hover:bg-green-600/40 text-green-400 border border-green-500/30 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-2">
+                <i class="fa-brands fa-whatsapp"></i><span>WhatsApp</span>
+              </button>
+              <button onclick="shareToSocial('clipboard')" class="py-2.5 px-3 bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-copy"></i><span>Copiar Legenda</span>
+              </button>
+            </div>
+          </div>
+
+          <button onclick="publishToCommunity()" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold transition-all shadow-lg flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+            <span>Publicar no Mural Global (Supabase)</span>
+          </button>
         </div>
-    </div>
 
-    <!-- Modal de Plataformas da Faixa Atual -->
-    <div id="platformModal" class="modal-overlay" onclick="closePlatformModalOnOutside(event)">
-        <div class="modal-content">
-            <div class="modal-title" id="modalSongTitle">Onde quer ouvir?</div>
-            <a id="linkHyperFollow" class="platform-btn" href="" target="_blank">🔗 Aceder HyperFollow (DistroKid)</a>
-            <a class="platform-btn" href="https://open.spotify.com/artist/nano01" target="_blank">🟢 Spotify</a>
-            <a class="platform-btn" href="https://music.apple.com" target="_blank">🍎 Apple Music</a>
-            <a class="platform-btn" href="https://www.youtube.com/@Nano01oficial" target="_blank">🔴 YouTube Music</a>
-            <button class="close-modal" onclick="closePlatformModal()">Fechar</button>
+        <!-- Preview Card -->
+        <div class="lg:col-span-6 flex flex-col items-center justify-center">
+          <div id="preview-card" class="w-full h-72 rounded-2xl p-6 flex flex-col justify-between border-2 border-emerald-500/50 shadow-2xl relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-950 to-emerald-950">
+            <div class="flex justify-between items-center z-10">
+              <span class="text-[10px] font-mono tracking-widest text-emerald-400 bg-gray-950/80 px-2.5 py-1 rounded border border-emerald-500/30">
+                NANO 01 // SOCIAL PASS
+              </span>
+              <span id="card-creator-tag" class="text-xs font-bold text-gray-300">@Fã_Astronauta</span>
+            </div>
+
+            <div class="text-center space-y-2 z-10">
+              <div class="w-12 h-12 mx-auto rounded-full bg-emerald-600/30 border border-emerald-400 flex items-center justify-center text-emerald-400 animate-pulse">
+                <i class="fa-solid fa-headphones"></i>
+              </div>
+              <h3 id="card-song-title" class="font-bold text-white text-lg">Questão de tempo</h3>
+              <p class="text-xs text-gray-400">Nano 01 Oficial Studio</p>
+            </div>
+
+            <div class="flex justify-between items-center text-[10px] text-gray-400 font-mono z-10 pt-4 border-t border-gray-800/80">
+              <span>STATUS: SECURE</span>
+              <span class="text-emerald-400">EDITION 2026</span>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 
-    <!-- Redes Sociais Oficiais -->
-    <div class="links-container">
-        <a class="btn-link" href="https://www.instagram.com/nano01oficial" target="_blank" rel="noopener">Instagram</a>
-        <a class="btn-link" href="https://www.tiktok.com/@nano01oficial" target="_blank" rel="noopener">TikTok</a>
-        <a class="btn-link" href="https://www.youtube.com/@Nano01oficial" target="_blank" rel="noopener">YouTube</a>
-        <a class="btn-link" href="https://www.facebook.com/Nano01oficial" target="_blank" rel="noopener">Facebook</a>
+  <!-- ABA 3: MURAL GLOBAL -->
+  <div id="tab-community" class="space-y-6 hidden">
+    <div class="bg-nexus-card border border-nexus-border rounded-2xl p-6 md:p-8 shadow-2xl space-y-6">
+      <div class="flex items-center justify-between pb-4 border-b border-gray-800">
+        <div>
+          <h2 class="text-2xl font-bold text-white flex items-center">
+            <i class="fa-solid fa-users mr-3 text-emerald-400"></i> Mural Global dos Fãs
+          </h2>
+          <p class="text-sm text-gray-400 mt-1">Interações e artes salvas em tempo real no banco de dados.</p>
+        </div>
+        <button onclick="switchTab('creator')" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold transition-all">
+          + Criar Minha Arte
+        </button>
+      </div>
+
+      <div id="community-feed" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <!-- Preenchido via Supabase -->
+      </div>
     </div>
+  </div>
 
-    <footer>
-        &copy; 2026 Nano 01 Produções & Música. All rights reserved.
-    </footer>
+</main>
+
+<!-- PLAYER INFERIOR -->
+<div class="fixed bottom-0 inset-x-0 bg-gray-950 border-t border-nexus-border p-3 z-50 flex items-center justify-between max-w-5xl mx-auto rounded-t-2xl shadow-2xl">
+  <div class="flex items-center space-x-3">
+    <div class="w-10 h-10 rounded-lg bg-emerald-600/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
+      <i class="fa-solid fa-play" id="play-icon"></i>
+    </div>
+    <div>
+      <h4 class="text-xs font-bold text-white">Nano 01 - Streaming Hub</h4>
+      <p class="text-[10px] text-emerald-400">Secure Audio Active</p>
+    </div>
+  </div>
+  <div class="flex items-center space-x-3">
+    <button onclick="toggleAudioPreview()" id="play-btn" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-medium transition-all">
+      <i class="fa-solid fa-play mr-1"></i> Tocar Prévia
+    </button>
+  </div>
 </div>
 
-<!-- Lógica JavaScript -->
 <script>
-    const tracks = [
-        { title: "Quebrando a Ilusão", artist: "Nano01", preview: "https://p.scdn.co/mp3-preview/54497e68cfb939d8212176b9f2736166133efb25?cid=9635882568684d0cb8c20fcb69a92440", hyperfollow: "https://distrokid.com/hyperfollow/nano01/quebrando-a-iluso" },
-        { title: "The Street Lamp Pissing on the Dog", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/the-street-lamp-pissing-on-the-dog" },
-        { title: "O papagaio bêbado e o jupará", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/o-papagaio-bbado-e-o-jupara" },
-        { title: "Chora no 22 bebê", artist: "Nano01 / MC Ousadia", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/chora-no-22-beb" },
-        { title: "Ghost of the 405", artist: "Nano D.", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/ghost-of-the-405" },
-        { title: "Beyond the Invisible Screen", artist: "Nano D.", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/beyond-the-invisible-screen" },
-        { title: "Coffee Stains & Midnight Notes", artist: "Nano D.", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/coffee-stains-midnight-notes" },
-        { title: "Curves of Midnight", artist: "Nano D.", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/curves-of-midnight" },
-        { title: "O poste mijando no cachorro", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/o-poste-mijando-no-cachorro" },
-        { title: "Window View", artist: "Nano D.", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/window-view" },
-        { title: "Forbidden Fire", artist: "Nano D.", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/forbidden-fire" },
-        { title: "Morning Coffee", artist: "Nano D.", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/morning-coffee" },
-        { title: "Staying Home", artist: "Nano D.", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/staying-home" },
-        { title: "Grito de um amor proibido", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/grito-de-um-amor-proibido" },
-        { title: "Amor Dividido", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/amor-dividindo" },
-        { title: "O fantasma da novinha", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/o-fantasma-da-novinha" },
-        { title: "The Soul of the People", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/the-soul-of-the-people" },
-        { title: "A alma do povo", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/a-alma-do-povo" },
-        { title: "Soberania", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/soberania" },
-        { title: "Ser pai não tem manual", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/ser-pai-no-tem-manual" },
-        { title: "A letra é minha", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/a-letra-e-minha" },
-        { title: "O dinossauro", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/o-dinossauro" },
-        { title: "IA não tem alma", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/ia-no-tem-alma" },
-        { title: "Sinfonia binária", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/sinfonia-binria" },
-        { title: "Sem Atalho", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/sem-atalho" },
-        { title: "Dono do meu tempo", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/dono-do-meu-tempo" },
-        { title: "Clean Aesthetic", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/clean-aesthetic" },
-        { title: "Friday Night Vision", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/friday-night-vision" },
-        { title: "Pix da patroa", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/pix-da-patroa" },
-        { title: "Quem cantar rap também ama", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/quem-cantar-rap-tambm-ama" },
-        { title: "O corre não espera", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/o-corre-no-espera" },
-        { title: "O futuro é você", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/o-futuro-voc" },
-        { title: "Doutor da quebrada", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/doutor-da-quebrada" },
-        { title: "Código fraturado", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/cdigo-fraturado" },
-        { title: "Protocolo de honra", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/protocolo-de-honra" },
-        { title: "Protocolo de retorno", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/protocolo-de-retorno" },
-        { title: "Protocolo de distância", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/protocolo-de-distncia" },
-        { title: "Protocolo amarelo", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/protocolo-amarelo" },
-        { title: "Modão sertanejo", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/modo-sertanejo" },
-        { title: "Hoje eu vou beber", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/hoje-eu-vou-beber" },
-        { title: "O gole do esquecimento", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/o-gole-do-esquecimento" },
-        { title: "O fantasma do lar", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/o-fantasma-do-lar" },
-        { title: "A caminhada", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/a-caminhada" },
-        { title: "United We Rise", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/united-we-rise" },
-        { title: "Questão de tempo", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/questo-de-tempo" },
-        { title: "Doi de mais", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/doi-de-mais" },
-        { title: "Frutinha", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/frutinha" },
-        { title: "Ponte pro amanhecer", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/ponte-pro-amanhecer" },
-        { title: "Midnight Canvas", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/midnight-canvas" },
-        { title: "Estilo prudente", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/estilo-prudente" },
-        { title: "Piseiro noel", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/piseiro-noel" },
-        { title: "O prejuízo tá pago", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/o-prejuizo-ta-pago" },
-        { title: "Eu não beijo ex", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/eu-no-beijo-ex" },
-        { title: "Canto seguro", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/canto-seguro" },
-        { title: "Coração embriagado", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/corao-embriagado" },
-        { title: "Painel eletrônico", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/painel-eletrnico-2" },
-        { title: "Nova batida", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/nova-batida" },
-        { title: "The Chicago shift", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/the-chicago-shift" },
-        { title: "Pãozinho de mel", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/pozinho-de-mel" },
-        { title: "Ema da Bahia", artist: "Nano01", preview: "", hyperfollow: "https://distrokid.com/hyperfollow/nano01/ema-da-bahia" }
-    ];
+// --- SUPABASE CLIENT ---
+const SUPABASE_URL = 'https://ntdtwrqtjbhshlwjwdgi.supabase.co';
+const SUPABASE_KEY = 'Sb_publishable_aJLgcDU4wygZgab9-PqNpA_1tPYcx_U';
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    let currentIndex = 0;
+window.addEventListener('DOMContentLoaded', () => {
+  fetchSongsFromCloud();
+});
 
-    function updatePlayer() {
-        const track = tracks[currentIndex];
-        document.getElementById("trackTitle").innerText = track.title;
-        document.getElementById("trackArtist").innerText = track.artist;
-        document.getElementById("trackCounter").innerText = `FAIXA ${currentIndex + 1} DE ${tracks.length}`;
-        
-        const audioElem = document.getElementById("audioPreview");
-        if (track.preview) {
-            audioElem.src = track.preview;
-            audioElem.style.display = "block";
-        } else {
-            audioElem.pause();
-            audioElem.src = "";
-            audioElem.style.display = "none";
-        }
+function switchTab(tab) {
+  ['home', 'creator', 'community'].forEach(t => {
+    const el = document.getElementById(`tab-${t}`);
+    const btn = document.getElementById(`btn-tab-${t}`);
+    if(t === tab) {
+      el.classList.remove('hidden');
+      if(btn) {
+        btn.className = 'px-3 py-1.5 rounded-lg text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 transition-all';
+      }
+      if(t === 'community') fetchSongsFromCloud();
+    } else {
+      el.classList.add('hidden');
+      if(btn) {
+        btn.className = 'px-3 py-1.5 rounded-lg text-xs font-medium bg-gray-800 text-gray-300 hover:bg-gray-700 transition-all';
+      }
+    }
+  });
+}
+
+function previewCreationCard() {
+  const name = document.getElementById('creator-name').value.trim() || "Fã_Astronauta";
+  const song = document.getElementById('creator-song').value;
+  document.getElementById('card-creator-tag').innerText = `@${name}`;
+  document.getElementById('card-song-title').innerText = song;
+}
+
+function shareToSocial(platform) {
+  const author = document.getElementById('creator-name').value.trim() || "Astronauta";
+  const song = document.getElementById('creator-song').value;
+  const text = `🔥 Ouvindo o som "${song}" criado por @${author} no Hub Oficial do Nano 01! #Nano01 #IndependentMusic`;
+
+  if (platform === 'whatsapp') {
+    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
+  } else {
+    navigator.clipboard.writeText(text);
+    alert("Legenda copiada com sucesso para a sua área de transferência!");
+  }
+}
+
+async function fetchSongsFromCloud(searchTerm = '') {
+  try {
+    let query = supabaseClient.from('songs').select('*');
+    if (searchTerm) {
+      query = query.ilike('name', `%${searchTerm}%`);
+    }
+    const { data, error } = await query;
+    if (error) {
+      console.error('Erro ao buscar músicas:', error);
+      return;
+    }
+    renderCloudSongs(data);
+  } catch (err) {
+    console.error('Erro de conexão:', err);
+  }
+}
+
+function renderCloudSongs(songs) {
+  const resultsContainer = document.getElementById('search-results');
+  const communityFeed = document.getElementById('community-feed');
+
+  if (!songs || songs.length === 0) {
+    if (resultsContainer) resultsContainer.innerHTML = '<p class="text-xs text-gray-400 p-2">Nenhuma música encontrada.</p>';
+    if (communityFeed) communityFeed.innerHTML = '<p class="text-xs text-gray-400 p-2">Nenhum som no mural ainda.</p>';
+    return;
+  }
+
+  let searchHtml = '';
+  let feedHtml = '';
+
+  songs.forEach((song) => {
+    searchHtml += `
+      <div class="bg-gray-900 border border-gray-800 rounded-xl p-3 flex items-center justify-between">
+        <div>
+          <h4 class="font-bold text-white text-xs">${song.name}</h4>
+          <p class="text-[10px] text-emerald-400">${song.genre || 'Música Independente'}</p>
+        </div>
+        <span class="text-[10px] text-gray-400">Ativo</span>
+      </div>
+    `;
+
+    feedHtml += `
+      <div class="bg-gray-900 border border-gray-800 rounded-xl p-4 space-y-3 shadow-lg">
+        <div class="flex justify-between items-center text-[10px] font-mono text-emerald-400">
+          <span>@Nano01_Cloud</span>
+          <span>Online</span>
+        </div>
+        <div class="h-28 rounded-lg bg-gradient-to-tr from-emerald-950 to-gray-900 border border-emerald-500/30 flex flex-col items-center justify-center p-3 text-center">
+          <i class="fa-solid fa-compact-disc text-emerald-400 text-xl mb-1"></i>
+          <span class="font-bold text-xs text-white">${song.name}</span>
+          <span class="text-[9px] text-gray-400 uppercase mt-1">${song.genre || 'Official Release'}</span>
+        </div>
+      </div>
+    `;
+  });
+
+  if (resultsContainer) resultsContainer.innerHTML = searchHtml;
+  if (communityFeed) communityFeed.innerHTML = feedHtml;
+}
+
+function searchCatalog() {
+  const query = document.getElementById('music-search-input').value.trim();
+  const dialogueEl = document.getElementById('avatar-dialogue');
+  dialogueEl.innerHTML = `<span class="text-white font-bold">Buscando na nuvem por: "${query}"...</span>`;
+  fetchSongsFromCloud(query);
+}
+
+async function publishToCommunity() {
+  const author = document.getElementById('creator-name').value.trim() || "Astronauta";
+  const songName = document.getElementById('creator-song').value;
+
+  try {
+    const { error } = await supabaseClient
+      .from('songs')
+      .insert([
+        { name: `${songName} (${author})`, genre: 'Community Edition' }
+      ]);
+
+    if (error) {
+      alert('Erro ao publicar na nuvem: ' + error.message);
+      return;
     }
 
-    async function abrirHubVIP() {
-        if ("Notification" in window) {
-            try {
-                const permission = await Notification.requestPermission();
-                if (permission === "granted") {
-                    new Notification("Nano 01 // Centro de Comando VIP", {
-                        body: "Notificações ativadas! Alertas de novos lançamentos prontos.",
-                    });
-                }
-            } catch (err) {
-                console.log("Erro ao solicitar notificações:", err);
-            }
-        }
+    alert("Publicado com sucesso no Mural Global do Supabase!");
+    fetchSongsFromCloud();
+    switchTab('community');
+  } catch (err) {
+    console.error('Erro:', err);
+  }
+}
 
-        document.getElementById("vipHubModal").style.display = "flex";
-
-        const btn = document.getElementById('unlockBtn');
-        btn.innerText = "Acesso VIP Ativo ✔ (Alertas & Plataformas)";
-        btn.classList.add('verified');
+let isPlaying = false;
+function toggleAudioPreview() {
+  const btn = document.getElementById('play-btn');
+  isPlaying = !isPlaying;
+  if(isPlaying) {
+    btn.innerHTML = '<i class="fa-solid fa-pause mr-1"></i> Pausar Prévia';
+    if('speechSynthesis' in window) {
+      window.speechSynthesis.speak(new SpeechSynthesisUtterance("Reproduzindo stream oficial de Nano 01."));
     }
-
-    function closeVipModal() {
-        document.getElementById("vipHubModal").style.display = "none";
-    }
-
-    function closeVipModalOnOutside(event) {
-        if (event.target.id === "vipHubModal") {
-            closeVipModal();
-        }
-    }
-
-    function nextTrack() {
-        currentIndex = (currentIndex + 1) % tracks.length;
-        updatePlayer();
-    }
-
-    function prevTrack() {
-        currentIndex = (currentIndex - 1 + tracks.length) % tracks.length;
-        updatePlayer();
-    }
-
-    function openPlatformModal() {
-        const track = tracks[currentIndex];
-        document.getElementById("modalSongTitle").innerText = `Ouvir: "${track.title}"`;
-        document.getElementById("linkHyperFollow").href = track.hyperfollow;
-        document.getElementById("platformModal").style.display = "flex";
-    }
-
-    function closePlatformModal() {
-        document.getElementById("platformModal").style.display = "none";
-    }
-
-    function closePlatformModalOnOutside(event) {
-        if (event.target.id === "platformModal") {
-            closePlatformModal();
-        }
-    }
-
-    function normalizeStr(str) {
-        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
-    }
-
-    function performAISearch() {
-        const rawQuery = document.getElementById("searchInput").value;
-        const query = normalizeStr(rawQuery);
-        if (!query) return;
-
-        let bestMatchIndex = -1;
-        let highestScore = 0;
-
-        tracks.forEach((track, index) => {
-            const titleNorm = normalizeStr(track.title);
-            let score = 0;
-            if (titleNorm.includes(query) || query.includes(titleNorm)) score += 10;
-            
-            const queryWords = query.split(" ");
-            queryWords.forEach(word => {
-                if (word.length > 2 && titleNorm.includes(word)) score += 3;
-            });
-
-            if (score > highestScore) {
-                highestScore = score;
-                bestMatchIndex = index;
-            }
-        });
-
-        if (bestMatchIndex !== -1 && highestScore > 0) {
-            currentIndex = bestMatchIndex;
-            updatePlayer();
-        } else {
-            alert("Música localizada no catálogo oficial!");
-        }
-    }
-
-    function handleSearch(e) {
-        if (e.key === 'Enter') performAISearch();
-    }
-
-    function startAIVoiceSearch() {
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-        if (!SpeechRecognition) {
-            alert("Navegador sem suporte direto a voz. Use a pesquisa escrita.");
-            return;
-        }
-        const rec = new SpeechRecognition();
-        rec.lang = 'pt-BR';
-        rec.onstart = () => { document.getElementById("aiVoicePrompt").innerText = "🎙️ OUVINDO VOZ..."; };
-        rec.onresult = (e) => {
-            document.getElementById("searchInput").value = e.results[0][0].transcript;
-            performAISearch();
-            document.getElementById("aiVoicePrompt").innerText = "🎙️ PESQUISA POR VOZ (NOME DA MÚSICA)";
-        };
-        rec.onerror = () => { document.getElementById("aiVoicePrompt").innerText = "🎙️ PESQUISA POR VOZ (NOME DA MÚSICA)"; };
-        rec.start();
-    }
-
-    window.onload = updatePlayer;
+  } else {
+    btn.innerHTML = '<i class="fa-solid fa-play mr-1"></i> Tocar Prévia';
+    if('speechSynthesis' in window) window.speechSynthesis.cancel();
+  }
+}
 </script>
 </body>
 </html>
