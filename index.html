@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nano 01 // Hub Oficial & Estúdio Social</title>
+<title>Nano 01 // Official Catalog & Creator Studio</title>
 
 <!-- HEADERS DE SEGURANÇA MÁXIMA -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.jsdelivr.net https://cdn.tailwindcss.com https://cdnjs.cloudflare.com https://fonts.googleapis.com https://fonts.gstatic.com *.supabase.co; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: ; connect-src 'self' https://*.supabase.co;">
@@ -61,7 +61,7 @@ tailwind.config = {
       </div>
     </div>
     <div class="flex items-center space-x-2 overflow-x-auto py-2">
-      <button onclick="switchTab('home')" id="btn-tab-home" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 transition-all">Central</button>
+      <button onclick="switchTab('home')" id="btn-tab-home" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/35 transition-all">Central</button>
       <button onclick="switchTab('creator')" id="btn-tab-creator" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-gray-800 text-gray-300 hover:bg-gray-700 transition-all"><i class="fa-solid fa-palette mr-1 text-emerald-400"></i> Estúdio Social</button>
       <button onclick="switchTab('community')" id="btn-tab-community" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-gray-800 text-gray-300 hover:bg-gray-700 transition-all"><i class="fa-solid fa-users mr-1 text-emerald-400"></i> Mural</button>
     </div>
@@ -84,7 +84,7 @@ tailwind.config = {
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-gray-950 border border-gray-800 rounded-2xl p-6">
-        <!-- Avatar / Foto Oficial -->
+        <!-- Avatar Holográfico Oficial -->
         <div class="lg:col-span-5 flex flex-col items-center justify-center space-y-3">
           <div class="relative w-full h-64 rounded-2xl overflow-hidden border-2 border-emerald-500/60 shadow-2xl shadow-emerald-950/80 bg-gray-900 group">
             <img src="1000217500.jpg" alt="Nano 01 Oficial" class="w-full h-full object-cover object-center filter contrast-125 brightness-95">
@@ -101,11 +101,10 @@ tailwind.config = {
         <div class="lg:col-span-7 space-y-4">
           <div class="bg-gray-900 border border-gray-800 rounded-xl p-4 text-sm text-gray-200 code-font shadow-inner">
             <p id="avatar-dialogue" class="text-emerald-400 leading-relaxed">
-              <span class="animate-pulse">Bem-vindo ao quartel-general do som independente. Busque ou crie seu card!</span>
+              <span class="animate-pulse">Astronauta, escolha uma música e crie seu card exclusivo para o Instagram e TikTok!</span>
             </p>
           </div>
 
-          <!-- Barra de Pesquisa -->
           <div class="flex items-center space-x-2 bg-gray-900 border border-gray-700 rounded-xl p-2">
             <i class="fa-solid fa-magnifying-glass text-emerald-400 pl-2"></i>
             <input type="text" id="music-search-input" placeholder="Buscar música no catálogo..." class="flex-1 bg-transparent border-none text-sm text-white focus:outline-none px-2" onkeydown="if(event.key === 'Enter') searchCatalog()">
@@ -117,7 +116,7 @@ tailwind.config = {
           <div class="flex flex-col sm:flex-row gap-2 pt-2">
             <button onclick="switchTab('creator')" class="flex-1 p-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs shadow-lg transition-all flex items-center justify-center space-x-2">
               <i class="fa-solid fa-wand-magic-sparkles"></i>
-              <span>Criar Card Personalizado para Redes</span>
+              <span>Abrir Estúdio e Criar Card</span>
             </button>
           </div>
         </div>
@@ -132,23 +131,24 @@ tailwind.config = {
         <h2 class="text-2xl font-bold text-white flex items-center">
           <i class="fa-solid fa-palette mr-3 text-emerald-400"></i> Estúdio de Criação & Compartilhamento
         </h2>
-        <p class="text-sm text-gray-400 mt-1">Gere seu card com sua faixa favorita e compartilhe instantaneamente.</p>
+        <p class="text-sm text-gray-400 mt-1">Gere seu card com sua faixa favorita do Nano 01.</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
         <div class="lg:col-span-6 space-y-4 bg-gray-950 p-6 rounded-2xl border border-gray-800">
           <div class="space-y-2">
             <label class="block text-xs font-medium text-gray-400">Seu Apelido / Nome:</label>
-            <input type="text" id="creator-name" placeholder="Ex: Fã_Astronauta" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-3 text-sm text-white" oninput="previewCreationCard()">
+            <input type="text" id="creator-name" placeholder="Ex: Nano01" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-3 text-sm text-white" oninput="previewCreationCard()">
           </div>
 
           <div class="space-y-2">
             <label class="block text-xs font-medium text-gray-400">Escolha a Música:</label>
             <select id="creator-song" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-3 text-sm text-white" onchange="previewCreationCard()">
+              <option value="Chora no 22 bebê">Chora no 22 bebê</option>
               <option value="Questão de tempo">Questão de tempo</option>
-              <option value="CHORA NO 22 BEBÊ">CHORA NO 22 BEBÊ</option>
               <option value="O papagaio bêbado e o jupará">O papagaio bêbado e o jupará</option>
-              <option value="Echoes of the Street">Echoes of the Street</option>
+              <option value="O poste mijando no cachorro">O poste mijando no cachorro</option>
+              <option value="Pix da patroa">Pix da patroa</option>
             </select>
           </div>
 
@@ -170,21 +170,25 @@ tailwind.config = {
           </button>
         </div>
 
-        <!-- Preview Card -->
+        <!-- Preview Card com a foto do Avatar Integrada -->
         <div class="lg:col-span-6 flex flex-col items-center justify-center">
           <div id="preview-card" class="w-full h-72 rounded-2xl p-6 flex flex-col justify-between border-2 border-emerald-500/50 shadow-2xl relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-950 to-emerald-950">
+            <div class="absolute inset-0 opacity-20 overflow-hidden pointer-events-none">
+              <img src="1000217500.jpg" class="w-full h-full object-cover filter blur-sm">
+            </div>
+            
             <div class="flex justify-between items-center z-10">
               <span class="text-[10px] font-mono tracking-widest text-emerald-400 bg-gray-950/80 px-2.5 py-1 rounded border border-emerald-500/30">
                 NANO 01 // SOCIAL PASS
               </span>
-              <span id="card-creator-tag" class="text-xs font-bold text-gray-300">@Fã_Astronauta</span>
+              <span id="card-creator-tag" class="text-xs font-bold text-gray-300">@Nano01</span>
             </div>
 
             <div class="text-center space-y-2 z-10">
-              <div class="w-12 h-12 mx-auto rounded-full bg-emerald-600/30 border border-emerald-400 flex items-center justify-center text-emerald-400 animate-pulse">
-                <i class="fa-solid fa-headphones"></i>
+              <div class="w-12 h-12 mx-auto rounded-full overflow-hidden border border-emerald-400 shadow-md">
+                <img src="1000217500.jpg" class="w-full h-full object-cover">
               </div>
-              <h3 id="card-song-title" class="font-bold text-white text-lg">Questão de tempo</h3>
+              <h3 id="card-song-title" class="font-bold text-white text-lg">Chora no 22 bebê</h3>
               <p class="text-xs text-gray-400">Nano 01 Oficial Studio</p>
             </div>
 
@@ -240,7 +244,6 @@ tailwind.config = {
 </div>
 
 <script>
-// --- SUPABASE CLIENT ---
 const SUPABASE_URL = 'https://ntdtwrqtjbhshlwjwdgi.supabase.co';
 const SUPABASE_KEY = 'Sb_publishable_aJLgcDU4wygZgab9-PqNpA_1tPYcx_U';
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -251,37 +254,41 @@ window.addEventListener('DOMContentLoaded', () => {
 
 function switchTab(tab) {
   ['home', 'creator', 'community'].forEach(t => {
-    const el = document.getElementById(`tab-${t}`);
-    const btn = document.getElementById(`btn-tab-${t}`);
+    const el = document.getElementById('tab-' + t);
+    const btn = document.getElementById('btn-tab-' + t);
     if(t === tab) {
-      el.classList.remove('hidden');
-      if(btn) {
-        btn.className = 'px-3 py-1.5 rounded-lg text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 transition-all';
-      }
+      if(el) el.classList.remove('hidden');
+      if(btn) btn.className = 'px-3 py-1.5 rounded-lg text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/35 transition-all';
       if(t === 'community') fetchSongsFromCloud();
     } else {
-      el.classList.add('hidden');
-      if(btn) {
-        btn.className = 'px-3 py-1.5 rounded-lg text-xs font-medium bg-gray-800 text-gray-300 hover:bg-gray-700 transition-all';
-      }
+      if(el) el.classList.add('hidden');
+      if(btn) btn.className = 'px-3 py-1.5 rounded-lg text-xs font-medium bg-gray-800 text-gray-300 hover:bg-gray-700 transition-all';
     }
   });
 }
 
 function previewCreationCard() {
-  const name = document.getElementById('creator-name').value.trim() || "Fã_Astronauta";
-  const song = document.getElementById('creator-song').value;
-  document.getElementById('card-creator-tag').innerText = `@${name}`;
-  document.getElementById('card-song-title').innerText = song;
+  const nameInput = document.getElementById('creator-name');
+  const songSelect = document.getElementById('creator-song');
+  const tagEl = document.getElementById('card-creator-tag');
+  const titleEl = document.getElementById('card-song-title');
+
+  const name = nameInput && nameInput.value.trim() ? nameInput.value.trim() : "Nano01";
+  const song = songSelect ? songSelect.value : "Chora no 22 bebê";
+
+  if(tagEl) tagEl.innerText = '@' + name;
+  if(titleEl) titleEl.innerText = song;
 }
 
 function shareToSocial(platform) {
-  const author = document.getElementById('creator-name').value.trim() || "Astronauta";
-  const song = document.getElementById('creator-song').value;
-  const text = `🔥 Ouvindo o som "${song}" criado por @${author} no Hub Oficial do Nano 01! #Nano01 #IndependentMusic`;
+  const nameInput = document.getElementById('creator-name');
+  const songSelect = document.getElementById('creator-song');
+  const author = nameInput && nameInput.value.trim() ? nameInput.value.trim() : "Nano01";
+  const song = songSelect ? songSelect.value : "Chora no 22 bebê";
+  const text = '🔥 Ouvindo o som "' + song + '" criado por @' + author + ' no Hub Oficial do Nano 01! #Nano01 #IndependentMusic';
 
   if (platform === 'whatsapp') {
-    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
+    window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(text), '_blank');
   } else {
     navigator.clipboard.writeText(text);
     alert("Legenda copiada com sucesso para a sua área de transferência!");
@@ -292,16 +299,18 @@ async function fetchSongsFromCloud(searchTerm = '') {
   try {
     let query = supabaseClient.from('songs').select('*');
     if (searchTerm) {
-      query = query.ilike('name', `%${searchTerm}%`);
+      query = query.ilike('name', '%' + searchTerm + '%');
     }
     const { data, error } = await query;
     if (error) {
       console.error('Erro ao buscar músicas:', error);
+      renderCloudSongs([]);
       return;
     }
     renderCloudSongs(data);
   } catch (err) {
     console.error('Erro de conexão:', err);
+    renderCloudSongs([]);
   }
 }
 
@@ -310,8 +319,8 @@ function renderCloudSongs(songs) {
   const communityFeed = document.getElementById('community-feed');
 
   if (!songs || songs.length === 0) {
-    if (resultsContainer) resultsContainer.innerHTML = '<p class="text-xs text-gray-400 p-2">Nenhuma música encontrada.</p>';
-    if (communityFeed) communityFeed.innerHTML = '<p class="text-xs text-gray-400 p-2">Nenhum som no mural ainda.</p>';
+    if (resultsContainer) resultsContainer.innerHTML = '<p class="text-xs text-gray-400 p-2">Nenhuma música encontrada no catálogo.</p>';
+    if (communityFeed) communityFeed.innerHTML = '<p class="text-xs text-gray-400 p-2">Nenhum som publicado no mural ainda.</p>';
     return;
   }
 
@@ -325,7 +334,7 @@ function renderCloudSongs(songs) {
           <h4 class="font-bold text-white text-xs">${song.name}</h4>
           <p class="text-[10px] text-emerald-400">${song.genre || 'Música Independente'}</p>
         </div>
-        <span class="text-[10px] text-gray-400">Ativo</span>
+        <span class="text-[10px] font-mono text-gray-400">Ativo</span>
       </div>
     `;
 
@@ -336,7 +345,7 @@ function renderCloudSongs(songs) {
           <span>Online</span>
         </div>
         <div class="h-28 rounded-lg bg-gradient-to-tr from-emerald-950 to-gray-900 border border-emerald-500/30 flex flex-col items-center justify-center p-3 text-center">
-          <i class="fa-solid fa-compact-disc text-emerald-400 text-xl mb-1"></i>
+          <img src="1000217500.jpg" class="w-8 h-8 rounded-full object-cover mb-1 border border-emerald-400">
           <span class="font-bold text-xs text-white">${song.name}</span>
           <span class="text-[9px] text-gray-400 uppercase mt-1">${song.genre || 'Official Release'}</span>
         </div>
@@ -349,21 +358,26 @@ function renderCloudSongs(songs) {
 }
 
 function searchCatalog() {
-  const query = document.getElementById('music-search-input').value.trim();
+  const inputEl = document.getElementById('music-search-input');
+  const query = inputEl ? inputEl.value.trim() : '';
   const dialogueEl = document.getElementById('avatar-dialogue');
-  dialogueEl.innerHTML = `<span class="text-white font-bold">Buscando na nuvem por: "${query}"...</span>`;
+  if(dialogueEl) {
+    dialogueEl.innerHTML = '<span class="text-white font-bold">Buscando na nuvem por: "' + query + '"...</span>';
+  }
   fetchSongsFromCloud(query);
 }
 
 async function publishToCommunity() {
-  const author = document.getElementById('creator-name').value.trim() || "Astronauta";
-  const songName = document.getElementById('creator-song').value;
+  const nameInput = document.getElementById('creator-name');
+  const songSelect = document.getElementById('creator-song');
+  const author = nameInput && nameInput.value.trim() ? nameInput.value.trim() : "Nano01";
+  const songName = songSelect ? songSelect.value : "Chora no 22 bebê";
 
   try {
     const { error } = await supabaseClient
       .from('songs')
       .insert([
-        { name: `${songName} (${author})`, genre: 'Community Edition' }
+        { name: songName + ' (' + author + ')', genre: 'Community Edition' }
       ]);
 
     if (error) {
@@ -375,22 +389,31 @@ async function publishToCommunity() {
     fetchSongsFromCloud();
     switchTab('community');
   } catch (err) {
-    console.error('Erro:', err);
+    console.error('Erro de requisição:', err);
   }
 }
 
 let isPlaying = false;
 function toggleAudioPreview() {
   const btn = document.getElementById('play-btn');
+  const playIcon = document.getElementById('play-icon');
   isPlaying = !isPlaying;
+  
   if(isPlaying) {
-    btn.innerHTML = '<i class="fa-solid fa-pause mr-1"></i> Pausar Prévia';
+    if(btn) btn.innerHTML = '<i class="fa-solid fa-pause mr-1"></i> Pausar Prévia';
+    if(playIcon) playIcon.className = 'fa-solid fa-pause text-emerald-400 animate-pulse';
     if('speechSynthesis' in window) {
-      window.speechSynthesis.speak(new SpeechSynthesisUtterance("Reproduzindo stream oficial de Nano 01."));
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance("Reproduzindo stream oficial de Nano 01.");
+      utterance.lang = 'pt-BR';
+      window.speechSynthesis.speak(utterance);
     }
   } else {
-    btn.innerHTML = '<i class="fa-solid fa-play mr-1"></i> Tocar Prévia';
-    if('speechSynthesis' in window) window.speechSynthesis.cancel();
+    if(btn) btn.innerHTML = '<i class="fa-solid fa-play mr-1"></i> Tocar Prévia';
+    if(playIcon) playIcon.className = 'fa-solid fa-play';
+    if('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
   }
 }
 </script>
