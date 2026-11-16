@@ -230,7 +230,7 @@ tailwind.config = {
 
 <script>
 const SUPABASE_URL = 'https://ntdtwrqtjbhshlwjwdgi.supabase.co';
-const SUPABASE_KEY = 'cdbcab0cd3msh246b01115afa4b9p1ceb17jsn86f157fb5080';
+const SUPABASE_KEY = 'sb_publishable_aJLgcDU4wygZgab9-PqNpA_1tPYcx_U';
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 let globalCatalog = [];
@@ -334,7 +334,6 @@ function playSong(songName) {
   if(btnText) btnText.innerText = 'Pausar';
   if(btnIcon) btnIcon.className = 'fa-solid fa-pause';
 
-  // Executa o player de voz sintética HD em português para dar o feedback sonoro imediato sem travar
   if('speechSynthesis' in window) {
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance("Reproduzindo a faixa oficial, " + songName + ", de Nano 01.");
