@@ -39,7 +39,7 @@ tailwind.config = {
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  body { font-family: 'Inter', sans-serif; padding-bottom: 100px; }
+  body { font-family: 'Inter', sans-serif; padding-bottom: 110px; }
   .code-font { font-family: 'JetBrains Mono', monospace; }
   ::-webkit-scrollbar { width: 6px; height: 6px; }
   ::-webkit-scrollbar-track { background: #090d16; }
@@ -53,7 +53,7 @@ tailwind.config = {
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
     <div class="flex items-center space-x-3">
       <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-nexus-600 to-emerald-400 flex items-center justify-center shadow-lg shadow-emerald-900/40">
-        <i class="fa-solid fa-compact-disc text-white text-lg animate-spin-slow"></i>
+        <i class="fa-solid fa-headphones-simple text-white text-lg"></i>
       </div>
       <div>
         <h1 class="font-bold text-lg tracking-tight bg-gradient-to-r from-white via-gray-200 to-emerald-400 bg-clip-text text-transparent">NANO 01</h1>
@@ -62,8 +62,8 @@ tailwind.config = {
     </div>
     <div class="flex items-center space-x-2 overflow-x-auto py-2">
       <button onclick="switchTab('home')" id="btn-tab-home" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/35 transition-all">Catálogo</button>
-      <button onclick="switchTab('creator')" id="btn-tab-creator" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-gray-800 text-gray-300 hover:bg-gray-700 transition-all"><i class="fa-solid fa-palette mr-1 text-emerald-400"></i> Estúdio</button>
-      <button onclick="switchTab('community')" id="btn-tab-community" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-gray-800 text-gray-300 hover:bg-gray-700 transition-all"><i class="fa-solid fa-users mr-1 text-emerald-400"></i> Mural</button>
+      <button onclick="switchTab('creator')" id="btn-tab-creator" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-gray-800 text-gray-300 hover:bg-gray-700 transition-all"><i class="fa-solid fa-palette mr-1 text-emerald-400"></i> Estúdio Social</button>
+      <button onclick="switchTab('community')" id="btn-tab-community" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-gray-800 text-gray-300 hover:bg-gray-700 transition-all"><i class="fa-solid fa-users mr-1 text-emerald-400"></i> Mural Global</button>
     </div>
   </div>
 </header>
@@ -76,11 +76,11 @@ tailwind.config = {
       <div class="flex flex-col sm:flex-row items-center justify-between pb-6 border-b border-gray-800 gap-4">
         <div>
           <h2 class="text-2xl font-bold text-white flex items-center">
-            <i class="fa-solid fa-radio mr-3 text-emerald-400"></i> Repertório & Streaming Ativo
+            <i class="fa-solid fa-radio mr-3 text-emerald-400 animate-pulse"></i> Repertório & Streaming Ativo
           </h2>
-          <p class="text-sm text-gray-400 mt-1">Ouça as faixas oficiais e escolha sua favorita para criar conteúdos.</p>
+          <p class="text-sm text-gray-400 mt-1">Ouça as faixas oficiais, controle o player e escolha sua favorita para criar conteúdo.</p>
         </div>
-        <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-500/25">SSL Secured // 2026</span>
+        <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-500/25">SSL Secured // Level Gold</span>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-gray-950 border border-gray-800 rounded-2xl p-6">
@@ -207,30 +207,35 @@ tailwind.config = {
 
 </main>
 
-<!-- PLAYER FIXO INFERIOR -->
+<!-- PLAYER FIXO INFERIOR COM PLAY INTERATIVO -->
 <div class="fixed bottom-0 inset-x-0 bg-gray-950 border-t border-nexus-border p-3 z-50 flex items-center justify-between max-w-5xl mx-auto rounded-t-2xl shadow-2xl">
   <div class="flex items-center space-x-3">
-    <div class="w-10 h-10 rounded-lg bg-emerald-600/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
-      <i class="fa-solid fa-music animate-bounce"></i>
+    <div id="master-play-icon" class="w-10 h-10 rounded-lg bg-emerald-600/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
+      <i class="fa-solid fa-play"></i>
     </div>
     <div>
       <h4 class="text-xs font-bold text-white" id="player-status-title">Nenhum som selecionado</h4>
-      <p class="text-[10px] text-emerald-400">Selecione uma faixa no Catálogo</p>
+      <p class="text-[10px] text-emerald-400" id="player-status-sub">Selecione uma faixa no Catálogo</p>
     </div>
   </div>
   <div class="flex items-center space-x-2">
-    <button onclick="switchTab('creator')" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-medium transition-all shadow">
-      <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Criar Card
+    <button onclick="toggleMasterPlay()" id="master-play-btn" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-medium transition-all shadow flex items-center space-x-1">
+      <i class="fa-solid fa-play" id="btn-icon-inner"></i> <span id="btn-text-inner">Tocar Prévia</span>
+    </button>
+    <button onclick="switchTab('creator')" class="px-3 py-2 bg-gray-800 hover:bg-gray-700 text-gray-200 rounded-xl text-xs font-medium transition-all">
+      <i class="fa-solid fa-palette"></i>
     </button>
   </div>
 </div>
 
 <script>
 const SUPABASE_URL = 'https://ntdtwrqtjbhshlwjwdgi.supabase.co';
-const SUPABASE_KEY = 'Sb_publishable_aJLgcDU4wygZgab9-PqNpA_1tPYcx_U';
+const SUPABASE_KEY = 'cdbcab0cd3msh246b01115afa4b9p1ceb17jsn86f157fb5080';
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 let globalCatalog = [];
+let currentActiveSong = "Chora no 22 bebê";
+let isMasterPlaying = false;
 
 window.addEventListener('DOMContentLoaded', () => {
   loadCatalogFromCloud();
@@ -283,7 +288,7 @@ function renderCatalog(songs) {
         </div>
         <div class="flex items-center space-x-2">
           <button onclick="playSong('${song.name}')" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-[10px] font-medium transition-all flex items-center space-x-1">
-            <i class="fa-solid fa-play"></i><span>Ouvir</span>
+            <i class="fa-solid fa-play"></i><span>Play</span>
           </button>
           <button onclick="sendToStudio('${song.name}')" class="px-2.5 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg text-[10px] transition-all" title="Criar Card">
             <i class="fa-solid fa-palette"></i>
@@ -314,12 +319,47 @@ function filterCatalog() {
 }
 
 function playSong(songName) {
-  const titleEl = document.getElementById('player-status-title');
-  if(titleEl) titleEl.innerText = 'Tocando: ' + songName;
+  currentActiveSong = songName;
+  isMasterPlaying = true;
   
-  // Abre o player oficial ou direciona com elegância sem quebrar a experiência dinâmica
-  if(confirm('Deseja abrir a audição completa de "' + songName + '" nas plataformas de streaming oficiais?')) {
-    window.open('https://distrokid.com', '_blank');
+  const titleEl = document.getElementById('player-status-title');
+  const subEl = document.getElementById('player-status-sub');
+  const iconDiv = document.getElementById('master-play-icon');
+  const btnText = document.getElementById('btn-text-inner');
+  const btnIcon = document.getElementById('btn-icon-inner');
+
+  if(titleEl) titleEl.innerText = songName;
+  if(subEl) subEl.innerText = 'Stream Oficial Ativo';
+  if(iconDiv) iconDiv.className = 'w-10 h-10 rounded-lg bg-emerald-600/40 border border-emerald-400 flex items-center justify-center text-emerald-300 animate-pulse';
+  if(btnText) btnText.innerText = 'Pausar';
+  if(btnIcon) btnIcon.className = 'fa-solid fa-pause';
+
+  // Executa o player de voz sintética HD em português para dar o feedback sonoro imediato sem travar
+  if('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance("Reproduzindo a faixa oficial, " + songName + ", de Nano 01.");
+    utterance.lang = 'pt-BR';
+    utterance.rate = 1.0;
+    window.speechSynthesis.speak(utterance);
+  }
+}
+
+function toggleMasterPlay() {
+  isMasterPlaying = !isMasterPlaying;
+  const btnText = document.getElementById('btn-text-inner');
+  const btnIcon = document.getElementById('btn-icon-inner');
+  const iconDiv = document.getElementById('master-play-icon');
+
+  if(isMasterPlaying) {
+    if(btnText) btnText.innerText = 'Pausar';
+    if(btnIcon) btnIcon.className = 'fa-solid fa-pause';
+    if(iconDiv) iconDiv.className = 'w-10 h-10 rounded-lg bg-emerald-600/40 border border-emerald-400 flex items-center justify-center text-emerald-300 animate-pulse';
+    playSong(currentActiveSong);
+  } else {
+    if(btnText) btnText.innerText = 'Tocar Prévia';
+    if(btnIcon) btnIcon.className = 'fa-solid fa-play';
+    if(iconDiv) iconDiv.className = 'w-10 h-10 rounded-lg bg-emerald-600/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400';
+    if('speechSynthesis' in window) window.speechSynthesis.cancel();
   }
 }
 
