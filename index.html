@@ -206,27 +206,27 @@ tailwind.config = {
       </div>
 
       <div id="community-feed" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        <!-- Preenchido dinamicamente com interatividade -->
+        <!-- Preenchido dinamicamente -->
       </div>
     </div>
   </div>
 
 </main>
 
-<!-- PLAYER FIXO INFERIOR -->
+<!-- PLAYER FIXO INFERIOR CORRIGIDO -->
 <div class="fixed bottom-0 inset-x-0 bg-gray-950 border-t border-nexus-border p-3 z-50 flex items-center justify-between max-w-5xl mx-auto rounded-t-2xl shadow-2xl">
   <div class="flex items-center space-x-3">
     <div class="w-10 h-10 rounded-lg bg-emerald-600/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
       <i class="fa-solid fa-compact-disc animate-spin"></i>
     </div>
     <div>
-      <h4 class="text-xs font-bold text-white">Nano 01 - Streaming Oficial</h4>
-      <p class="text-[10px] text-emerald-400">DistroKid & Plataformas</p>
+      <h4 class="text-xs font-bold text-white" id="master-player-title">Nano 01 - Selecione uma faixa</h4>
+      <p class="text-[10px] text-emerald-400" id="master-player-sub">Pronto para reproduzir</p>
     </div>
   </div>
   <div class="flex items-center space-x-2">
     <a href="https://distrokid.com/hyperfollow/nano01" target="_blank" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-medium transition-all shadow flex items-center space-x-1">
-      <i class="fa-solid fa-play"></i> <span>Ouvir Artista</span>
+      <i class="fa-solid fa-play"></i> <span>Abrir Plataforma</span>
     </a>
   </div>
 </div>
@@ -302,9 +302,9 @@ function renderCatalog(songs) {
           <p class="text-[10px] text-emerald-400">Nano 01 // Oficial</p>
         </div>
         <div class="flex items-center space-x-2">
-          <a href="${song.link}" target="_blank" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-[10px] font-medium transition-all flex items-center space-x-1 shadow">
+          <button onclick="selectAndPlaySong('${song.name}', '${song.link}')" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-[10px] font-medium transition-all flex items-center space-x-1 shadow">
             <i class="fa-solid fa-play"></i><span>Ouvir</span>
-          </a>
+          </button>
           <button onclick="sendToStudio('${song.name}')" class="px-2.5 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg text-[10px] transition-all" title="Criar Card">
             <i class="fa-solid fa-palette"></i>
           </button>
@@ -313,6 +313,16 @@ function renderCatalog(songs) {
     `;
   });
   container.innerHTML = html;
+}
+
+function selectAndPlaySong(songName, songLink) {
+  const titleEl = document.getElementById('master-player-title');
+  const subEl = document.getElementById('master-player-sub');
+  if(titleEl) titleEl.innerText = 'Tocando: ' + songName;
+  if(subEl) subEl.innerText = 'Nano 01 Oficial Stream';
+
+  // Abre diretamente a faixa específica escolhida no HyperFollow da DistroKid em nova aba
+  window.open(songLink, '_blank');
 }
 
 function updateSongSelect(songs) {
@@ -361,7 +371,6 @@ function shareToSocial(platform) {
   const author = nameInput && nameInput.value.trim() ? nameInput.value.trim() : "Nano01";
   const song = songSelect ? songSelect.value : "Chora no 22 bebê";
   
-  // Encontra o link da música escolhida para o compartilhamento focar na música
   const foundSong = officialCatalog.find(s => s.name === song);
   const songLink = foundSong ? foundSong.link : 'https://distrokid.com/hyperfollow/nano01';
 
@@ -427,7 +436,6 @@ function likeCard(index) {
   if(countEl) {
     let current = parseInt(countEl.innerText);
     countEl.innerText = current + 1;
-    // Feedback visual animado
     countEl.classList.add('text-pink-500', 'scale-110');
     setTimeout(() => countEl.classList.remove('scale-110'), 300);
   }
