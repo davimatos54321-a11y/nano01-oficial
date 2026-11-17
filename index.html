@@ -70,17 +70,17 @@ tailwind.config = {
 
 <main class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-  <!-- ABA 1: CATÁLOGO PRINCIPAL E PLAYER INTERNO -->
+  <!-- ABA 1: CATÁLOGO PRINCIPAL -->
   <div id="tab-home" class="space-y-6">
     <div class="bg-nexus-card border border-nexus-border rounded-2xl p-6 md:p-8 shadow-2xl space-y-6">
       <div class="flex flex-col sm:flex-row items-center justify-between pb-6 border-b border-gray-800 gap-4">
         <div>
           <h2 class="text-2xl font-bold text-white flex items-center">
-            <i class="fa-solid fa-radio mr-3 text-emerald-400 animate-pulse"></i> Repertório & Player Interno
+            <i class="fa-solid fa-radio mr-3 text-emerald-400 animate-pulse"></i> Catálogo Oficial & Streaming
           </h2>
-          <p class="text-sm text-gray-400 mt-1">Clique em "Play" para ouvir a música selecionada instantaneamente dentro do site.</p>
+          <p class="text-sm text-gray-400 mt-1">Clique em "Ouvir" para reproduzir sua faixa diretamente nas plataformas oficiais.</p>
         </div>
-        <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-500/25">Internal Player Active</span>
+        <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-500/25">Level Gold // Verified</span>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-gray-950 border border-gray-800 rounded-2xl p-6">
@@ -91,7 +91,7 @@ tailwind.config = {
             <div class="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px] pointer-events-none opacity-40"></div>
             <div class="absolute bottom-3 left-3 right-3 flex justify-between items-center">
               <span class="text-[10px] font-mono tracking-widest text-emerald-300 bg-gray-950/90 px-2.5 py-1 rounded border border-emerald-500/40">
-                <i class="fa-solid fa-circle text-[8px] text-emerald-400 animate-ping mr-1"></i> STREAMING INTERNO
+                <i class="fa-solid fa-circle text-[8px] text-emerald-400 animate-ping mr-1"></i> NANO 01 OFFICIAL
               </span>
             </div>
           </div>
@@ -207,24 +207,21 @@ tailwind.config = {
 
 </main>
 
-<!-- PLAYER FIXO INFERIOR COM PLAY INTERATIVO REAL -->
+<!-- PLAYER FIXO INFERIOR -->
 <div class="fixed bottom-0 inset-x-0 bg-gray-950 border-t border-nexus-border p-3 z-50 flex items-center justify-between max-w-5xl mx-auto rounded-t-2xl shadow-2xl">
   <div class="flex items-center space-x-3">
-    <div id="master-play-icon" class="w-10 h-10 rounded-lg bg-emerald-600/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
-      <i class="fa-solid fa-play" id="bottom-icon-indicator"></i>
+    <div class="w-10 h-10 rounded-lg bg-emerald-600/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
+      <i class="fa-solid fa-compact-disc animate-spin"></i>
     </div>
     <div>
-      <h4 class="text-xs font-bold text-white" id="player-status-title">Nenhum som selecionado</h4>
-      <p class="text-[10px] text-emerald-400" id="player-status-sub">Clique em "Play" em qualquer música</p>
+      <h4 class="text-xs font-bold text-white">Nano 01 - Streaming Oficial</h4>
+      <p class="text-[10px] text-emerald-400">DistroKid & Plataformas</p>
     </div>
   </div>
   <div class="flex items-center space-x-2">
-    <button onclick="toggleMasterPlay()" id="master-play-btn" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-medium transition-all shadow flex items-center space-x-1">
-      <i class="fa-solid fa-play" id="btn-icon-inner"></i> <span id="btn-text-inner">Tocar Prévia</span>
-    </button>
-    <button onclick="switchTab('creator')" class="px-3 py-2 bg-gray-800 hover:bg-gray-700 text-gray-200 rounded-xl text-xs font-medium transition-all" title="Ir para o Estúdio">
-      <i class="fa-solid fa-palette"></i>
-    </button>
+    <a href="https://distrokid.com/hyperfollow/nano01" target="_blank" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-medium transition-all shadow flex items-center space-x-1">
+      <i class="fa-solid fa-play"></i> <span>Ouvir Artista</span>
+    </a>
   </div>
 </div>
 
@@ -233,24 +230,38 @@ const SUPABASE_URL = 'https://ntdtwrqtjbhshlwjwdgi.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_aJLgcDU4wygZgab9-PqNpA_1tPYcx_U';
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-// CATÁLOGO PRINCIPAL COM AS MELHORES MÚSICAS DO NANO 01
+// CATÁLOGO PRINCIPAL COM OS LINKS OFICIAIS EXATOS
 const officialCatalog = [
-  { name: 'Chora no 22 bebê' },
-  { name: 'O papagaio bêbado e o jupará' },
-  { name: 'Pix da patroa' },
-  { name: 'Questão de tempo' },
-  { name: 'Flash & Fame' },
-  { name: 'OFFLINE BABY' },
-  { name: 'AMOR DIVIDINDO' },
-  { name: 'Hoje eu vou beber' },
-  { name: 'Ema da Bahia' },
-  { name: 'Neblina na pista' },
-  { name: 'O rádio é a enxada' },
-  { name: 'Nano01' }
+  { name: 'O poste mijando no cachorro', link: 'https://distrokid.com/hyperfollow/nano01/o-poste-mijando-no-cachorro' },
+  { name: 'Pix da patroa', link: 'https://distrokid.com/hyperfollow/nano01/pix-da-patroa' },
+  { name: 'Chora no 22 bebê', link: 'https://distrokid.com/hyperfollow/nano01/chora-no-22-beb' },
+  { name: 'The Street Lamp Pissing on the Dog', link: 'https://distrokid.com/hyperfollow/nano01/the-street-lamp-pissing-on-the-dog' },
+  { name: 'Grito de um amor proibido', link: 'https://distrokid.com/hyperfollow/nano01/grito-de-um-amor-proibido' },
+  { name: 'O papagaio bêbado e o jupará', link: 'https://distrokid.com/hyperfollow/nano01/o-papagaio-bbado-e-o-jupar' },
+  { name: 'Flash & Fame', link: 'https://distrokid.com/hyperfollow/nano01/flash--fame' },
+  { name: 'Neblina na pista', link: 'https://distrokid.com/hyperfollow/nano01/neblina-na-pista' },
+  { name: 'THE SOUL OF THE PEOPLE', link: 'https://distrokid.com/hyperfollow/nano01/the-soul-of-the-people' },
+  { name: 'AMOR DIVIDINDO', link: 'https://distrokid.com/hyperfollow/nano01/amor-dividindo' },
+  { name: 'Hoje eu vou beber', link: 'https://distrokid.com/hyperfollow/nano01/hoje-eu-vou-beber' },
+  { name: 'O fantasma do lar', link: 'https://distrokid.com/hyperfollow/nano01/o-fantasma-do-lar' },
+  { name: 'Painel eletrônico', link: 'https://distrokid.com/hyperfollow/nano01/painel-eletrnico-2' },
+  { name: 'Quebrando a Ilusão', link: 'https://distrokid.com/hyperfollow/nano01/quebrando-a-ilusao' },
+  { name: 'The Vision Is Clear', link: 'https://distrokid.com/hyperfollow/nano01/the-vision-is-clear' },
+  { name: 'A caminhada', link: 'https://distrokid.com/hyperfollow/nano01/a-caminhada' },
+  { name: 'Doi de mais', link: 'https://distrokid.com/hyperfollow/nano01/doi-de-mais' },
+  { name: 'Ema da Bahia', link: 'https://distrokid.com/hyperfollow/nano01/ema-da-bahia' },
+  { name: 'Nova batida', link: 'https://distrokid.com/hyperfollow/nano01/nova-batida' },
+  { name: 'Oxigênio', link: 'https://distrokid.com/hyperfollow/nano01/oxigenio' },
+  { name: 'Questão de tempo', link: 'https://distrokid.com/hyperfollow/nano01/questo-de-tempo' },
+  { name: 'SER PAI NÃO TEM MANUAL', link: 'https://distrokid.com/hyperfollow/nano01/ser-pai-no-tem-manual' },
+  { name: 'United We Rise', link: 'https://distrokid.com/hyperfollow/nano01/united-we-rise' },
+  { name: 'Vitrine de vidro', link: 'https://distrokid.com/hyperfollow/nano01/vitrine-de-vidro' },
+  { name: 'A ALMA DO POVO', link: 'https://distrokid.com/hyperfollow/nano01/a-alma-do-povo' },
+  { name: 'Caminhão boiadeiro', link: 'https://distrokid.com/hyperfollow/nano01/modo-sertanejo' },
+  { name: 'Canto seguro', link: 'https://distrokid.com/hyperfollow/nano01/canto-seguro' },
+  { name: 'Coração embriagado', link: 'https://distrokid.com/hyperfollow/nano01/corao-embriagado' },
+  { name: 'CÓDIGO FRATURADO', link: 'https://distrokid.com/hyperfollow/nano01/cdigo-fraturado' }
 ];
-
-let currentActiveSong = "Chora no 22 bebê";
-let isMasterPlaying = false;
 
 window.addEventListener('DOMContentLoaded', () => {
   renderCatalog(officialCatalog);
@@ -283,12 +294,12 @@ function renderCatalog(songs) {
       <div class="bg-gray-900 border border-gray-800 rounded-xl p-3 flex items-center justify-between hover:border-emerald-500/50 transition-all">
         <div>
           <h4 class="font-bold text-white text-xs">${song.name}</h4>
-          <p class="text-[10px] text-emerald-400">Nano 01 // Stream Interno</p>
+          <p class="text-[10px] text-emerald-400">Nano 01 // Oficial</p>
         </div>
         <div class="flex items-center space-x-2">
-          <button onclick="playSongInternal('${song.name}')" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-[10px] font-medium transition-all flex items-center space-x-1 shadow">
-            <i class="fa-solid fa-play"></i><span>Play</span>
-          </button>
+          <a href="${song.link}" target="_blank" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-[10px] font-medium transition-all flex items-center space-x-1 shadow">
+            <i class="fa-solid fa-play"></i><span>Ouvir</span>
+          </a>
           <button onclick="sendToStudio('${song.name}')" class="px-2.5 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg text-[10px] transition-all" title="Criar Card">
             <i class="fa-solid fa-palette"></i>
           </button>
@@ -315,56 +326,6 @@ function filterCatalog() {
   const input = document.getElementById('music-search-input').value.toLowerCase();
   const filtered = officialCatalog.filter(s => s.name.toLowerCase().includes(input));
   renderCatalog(filtered);
-}
-
-// PLAYER INTERNO: EXECUTA DENTRO DO SITE SEM ABRIR OUTRA PÁGINA
-function playSongInternal(songName) {
-  currentActiveSong = songName;
-  isMasterPlaying = true;
-  
-  const titleEl = document.getElementById('player-status-title');
-  const subEl = document.getElementById('player-status-sub');
-  const iconDiv = document.getElementById('master-play-icon');
-  const btnText = document.getElementById('btn-text-inner');
-  const btnIcon = document.getElementById('btn-icon-inner');
-
-  if(titleEl) titleEl.innerText = songName;
-  if(subEl) subEl.innerText = 'Tocando ao vivo no Site';
-  if(iconDiv) iconDiv.className = 'w-10 h-10 rounded-lg bg-emerald-600/40 border border-emerald-400 flex items-center justify-center text-emerald-300 animate-pulse';
-  if(btnText) btnText.innerText = 'Pausar';
-  if(btnIcon) btnIcon.className = 'fa-solid fa-pause';
-
-  // Feedback de áudio integrado em HD (voz do sistema anunciando e rodando a faixa)
-  if('speechSynthesis' in window) {
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance("Tocando agora, " + songName + ", produção exclusiva de Nano 01.");
-    utterance.lang = 'pt-BR';
-    utterance.rate = 1.0;
-    window.speechSynthesis.speak(utterance);
-  }
-}
-
-function toggleMasterPlay() {
-  isMasterPlaying = !isMasterPlaying;
-  const btnText = document.getElementById('btn-text-inner');
-  const btnIcon = document.getElementById('btn-icon-inner');
-  const iconDiv = document.getElementById('master-play-icon');
-
-  if(isMasterPlaying) {
-    if(btnText) btnText.innerText = 'Pausar';
-    if(btnIcon) btnIcon.className = 'fa-solid fa-pause';
-    if(iconDiv) iconDiv.className = 'w-10 h-10 rounded-lg bg-emerald-600/40 border border-emerald-400 flex items-center justify-center text-emerald-300 animate-pulse';
-    playSongInternal(currentActiveSong);
-  } else {
-    if(btnText) btnText.innerText = 'Tocar Prévia';
-    if(btnIcon) btnIcon.className = 'fa-solid fa-play';
-    if(iconDiv) iconDiv.className = 'w-10 h-10 rounded-lg bg-emerald-600/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400';
-    if('speechSynthesis' in window) window.speechSynthesis.cancel();
-    const titleEl = document.getElementById('player-status-title');
-    const subEl = document.getElementById('player-status-sub');
-    if(titleEl) titleEl.innerText = currentActiveSong;
-    if(subEl) subEl.innerText = 'Pausado';
-  }
 }
 
 function sendToStudio(songName) {
@@ -394,7 +355,7 @@ function shareToSocial(platform) {
   const songSelect = document.getElementById('creator-song');
   const author = nameInput && nameInput.value.trim() ? nameInput.value.trim() : "Nano01";
   const song = songSelect ? songSelect.value : "Chora no 22 bebê";
-  const text = '🔥 Curtindo o som "' + song + '" criado por @' + author + ' no Estúdio Oficial do Nano 01! Acesse o site e ouça agora!';
+  const text = '🔥 Curtindo o som "' + song + '" criado por @' + author + ' no Estúdio Oficial do Nano 01! Acesse e ouça agora!';
 
   if (platform === 'whatsapp') {
     window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(text), '_blank');
