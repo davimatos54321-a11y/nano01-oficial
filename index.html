@@ -5,14 +5,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nano 01 // Official Creator Studio & Audio Hub</title>
 
-<!-- METATAGS DINÂMICAS PARA FACEBOOK E INSTAGRAM (OPEN GRAPH) -->
+<!-- INTELIGÊNCIA DE INDEXAÇÃO DE VOZ E SEO MUSICAL (SCHEMA.ORG PARA ALEXA E GOOGLE ASSISTANT) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicGroup",
+  "name": "Nano 01",
+  "alternateName": ["Nano01", "Nano D", "Projeto Nano 01 Oficial"],
+  "url": "https://davimatos54321-a11y.github.io/nano01-oficial/",
+  "image": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80",
+  "genre": ["Boom Bap", "Trap", "Piseiro", "Sertanejo Modão", "Brega Funk"],
+  "homeLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Campinas",
+      "addressRegion": "São Paulo",
+      "addressCountry": "BR"
+    }
+  },
+  "sameAs": [
+    "https://distrokid.com/hyperfollow/nano01"
+  ],
+  "description": "Creator Hub oficial do artista independente Nano 01. Repertório completo de músicas, estúdio de criação de cards para fãs e mural global."
+}
+</script>
+
+<!-- METATAGS DINÂMICAS PARA REDES SOCIAIS (OPEN GRAPH) -->
 <meta property="og:title" content="Nano 01 // Official Creator Studio">
 <meta property="og:description" content="Ouça as produções independentes e crie seu card exclusivo do Nano 01!">
 <meta property="og:image" content="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80">
 <meta property="og:url" content="https://davimatos54321-a11y.github.io/nano01-oficial/">
 <meta property="og:type" content="music.song">
 
-<!-- HEADERS DE SEGURANÇA MÁXIMA & BLINDAGEM DE DADOS -->
+<!-- HEADERS DE SEGURANÇA MÁXIMA & BLINDAGEM -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.jsdelivr.net https://cdn.tailwindcss.com https://cdnjs.cloudflare.com https://fonts.googleapis.com https://fonts.gstatic.com *.supabase.co; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: https:; connect-src 'self' https://*.supabase.co;">
 <meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -66,11 +92,11 @@ tailwind.config = {
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
     <div class="flex items-center space-x-3">
       <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-nexus-600 to-emerald-400 flex items-center justify-center shadow-lg shadow-emerald-900/40 ai-glow">
-        <i class="fa-solid fa-shield-halved text-white text-lg"></i>
+        <i class="fa-solid fa-microphone-lines text-white text-lg"></i>
       </div>
       <div>
-        <h1 class="font-bold text-lg tracking-tight bg-gradient-to-r from-white via-gray-200 to-emerald-400 bg-clip-text text-transparent">NANO 01 // SECURE HUB</h1>
-        <p class="text-xs text-emerald-400" id="ai-status-badge"><i class="fa-solid fa-circle text-[8px] animate-ping mr-1"></i> IA Marketing & SSL Ativos</p>
+        <h1 class="font-bold text-lg tracking-tight bg-gradient-to-r from-white via-gray-200 to-emerald-400 bg-clip-text text-transparent">NANO 01 // VOICE SEO</h1>
+        <p class="text-xs text-emerald-400" id="ai-status-badge"><i class="fa-solid fa-circle text-[8px] animate-ping mr-1"></i> Indexação de Voz Ativa</p>
       </div>
     </div>
     <div class="flex items-center space-x-2 overflow-x-auto py-2">
@@ -91,9 +117,9 @@ tailwind.config = {
           <h2 class="text-2xl font-bold text-white flex items-center">
             <i class="fa-solid fa-radio mr-3 text-emerald-400 animate-pulse"></i> Repertório Oficial & Streaming
           </h2>
-          <p class="text-sm text-gray-400 mt-1">Ouça as faixas oficiais do Nano 01 com alta performance e segurança.</p>
+          <p class="text-sm text-gray-400 mt-1">Ouça as faixas oficiais do Nano 01 otimizadas para busca por voz e assistentes.</p>
         </div>
-        <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-500/25">Level Gold // Secure</span>
+        <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-500/25">Voice Index Verified</span>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-gray-950 border border-gray-800 rounded-2xl p-6">
@@ -104,7 +130,7 @@ tailwind.config = {
             <div class="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px] pointer-events-none opacity-40"></div>
             <div class="absolute bottom-3 left-3 right-3 flex justify-between items-center">
               <span class="text-[10px] font-mono tracking-widest text-emerald-300 bg-gray-950/90 px-2.5 py-1 rounded border border-emerald-500/40">
-                <i class="fa-solid fa-shield text-[9px] text-emerald-400 mr-1"></i> SECURE STREAM
+                <i class="fa-solid fa-microphone text-[9px] text-emerald-400 mr-1"></i> NANO 01 OFFICIAL
               </span>
             </div>
           </div>
@@ -123,7 +149,7 @@ tailwind.config = {
     </div>
   </div>
 
-  <!-- ABA 2: ESTÚDIO SOCIAL COM IA DE LEGENDA -->
+  <!-- ABA 2: ESTÚDIO SOCIAL -->
   <div id="tab-creator" class="space-y-6 hidden">
     <div class="bg-nexus-card border border-nexus-border rounded-2xl p-6 md:p-8 shadow-2xl space-y-6">
       <div class="pb-4 border-b border-gray-800">
@@ -183,7 +209,7 @@ tailwind.config = {
             
             <div class="flex justify-between items-center z-10">
               <span class="text-[10px] font-mono tracking-widest text-emerald-400 bg-gray-950/80 px-2.5 py-1 rounded border border-emerald-500/30">
-                NANO 01 // SOCIAL PASS
+                NANO 01 // VOICE SEO
               </span>
               <span id="card-creator-tag" class="text-xs font-bold text-gray-300">@Nano01</span>
             </div>
@@ -197,7 +223,7 @@ tailwind.config = {
             </div>
 
             <div class="flex justify-between items-center text-[10px] text-gray-400 font-mono z-10 pt-4 border-t border-gray-800/80">
-              <span>STATUS: SECURE GOLD</span>
+              <span>VOICE INDEX: ON</span>
               <span class="text-emerald-400">EDITION 2026</span>
             </div>
           </div>
@@ -229,15 +255,15 @@ tailwind.config = {
 
 </main>
 
-<!-- PLAYER FIXO INFERIOR BLINDADO -->
+<!-- PLAYER FIXO INFERIOR -->
 <div class="fixed bottom-0 inset-x-0 bg-gray-950 border-t border-nexus-border p-3 z-50 flex items-center justify-between max-w-5xl mx-auto rounded-t-2xl shadow-2xl ai-glow">
   <div class="flex items-center space-x-3">
     <div class="w-10 h-10 rounded-lg bg-emerald-600/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
-      <i class="fa-solid fa-shield-halved animate-pulse"></i>
+      <i class="fa-solid fa-microphone-lines animate-pulse"></i>
     </div>
     <div>
-      <h4 class="text-xs font-bold text-white" id="master-player-title">Nano 01 - Secure Hub Ativo</h4>
-      <p class="text-[10px] text-emerald-400" id="master-player-sub">Proteção SSL & Streaming Oficial</p>
+      <h4 class="text-xs font-bold text-white" id="master-player-title">Nano 01 - Voice Hub Ativo</h4>
+      <p class="text-[10px] text-emerald-400">Indexação Alexa & Streaming Oficial</p>
     </div>
   </div>
   <div class="flex items-center space-x-2">
@@ -316,7 +342,7 @@ function renderCatalog(songs) {
       <div class="bg-gray-900 border border-gray-800 rounded-xl p-3 flex items-center justify-between hover:border-emerald-500/50 transition-all">
         <div>
           <h4 class="font-bold text-white text-xs">${song.name}</h4>
-          <p class="text-[10px] text-emerald-400">Nano 01 // Secure Stream</p>
+          <p class="text-[10px] text-emerald-400">Nano 01 // Voice Indexed</p>
         </div>
         <div class="flex items-center space-x-2">
           <button onclick="selectAndPlaySong('${song.name}', '${song.link}')" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-[10px] font-medium transition-all flex items-center space-x-1 shadow">
@@ -336,7 +362,7 @@ function selectAndPlaySong(songName, songLink) {
   const titleEl = document.getElementById('master-player-title');
   const subEl = document.getElementById('master-player-sub');
   if(titleEl) titleEl.innerText = 'Tocando: ' + songName;
-  if(subEl) subEl.innerText = 'Stream Seguro Ativo';
+  if(subEl) subEl.innerText = 'Voice Stream Ativo';
   window.open(songLink, '_blank');
 }
 
@@ -383,7 +409,6 @@ function previewCreationCard() {
   generateAILegeneration();
 }
 
-// IA QUE GERA LEGENDA VIRAL AUTOMÁTICA PARA POSTAR NAS REDES SOCIAIS
 function generateAILegeneration() {
   const nameInput = document.getElementById('creator-name');
   const songSelect = document.getElementById('creator-song');
@@ -394,8 +419,8 @@ function generateAILegeneration() {
   const songLink = foundSong ? foundSong.link : 'https://distrokid.com/hyperfollow/nano01';
 
   const templates = [
-    `🔥 Vibe pesada hoje com "${song}" do Nano 01! Criado por @${author}. Escute agora no talo 🎧👇\n${songLink}\n#Nano01 #Lancamento #MusicaIndependente #Spotify #DistroKid`,
-    `🚀 Som novo na pista! Curta "${song}" - Nano 01 (Card por @${author}). Aperte o play e sinta o som 🔊🔥\n${songLink}\n#Nano01 #Hit #NovaMusica #Player #Brazil`,
+    `🔥 Vibe pesada hoje com "${song}" do Nano 01! Criado por @${author}. Escute agora nas plataformas 🎧👇\n${songLink}\n#Nano01 #Lancamento #MusicaIndependente #Spotify #VoiceSEO`,
+    `🚀 Som oficial na pista! Curta "${song}" - Nano 01 (Card por @${author}). Aperte o play e sinta o som 🔊🔥\n${songLink}\n#Nano01 #Hit #NovaMusica #Player #Brazil`,
     `✨ Produção de respeito: "${song}" por Nano 01. Compartilhado por @${author}. Ouça já nas plataformas digitais! 🎶💎\n${songLink}\n#Nano01 #SomOficial #Stream #IndependentMusic`
   ];
 
@@ -423,7 +448,7 @@ function shareToSocial(platform) {
       }).catch(() => {});
     } else {
       navigator.clipboard.writeText(text);
-      alert("Legenda viral e link copiados para a área de transferência! Cole no seu Facebook ou Instagram.");
+      alert("Legenda viral e link copiados para a área de transferência!");
     }
   }
 }
@@ -447,17 +472,17 @@ async function fetchCommunityFeed() {
       feedHtml += `
         <div class="bg-gray-900 border border-gray-800 rounded-xl p-4 space-y-3 shadow-lg hover:border-emerald-500/40 transition-all">
           <div class="flex justify-between items-center text-[10px] font-mono text-emerald-400">
-            <span>@Fan_Community</span>
-            <span class="bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30">Secure Verified</span>
+            <span>@Voice_Index</span>
+            <span class="bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30">Verified</span>
           </div>
           <div class="h-28 rounded-lg bg-gradient-to-tr from-emerald-950 to-gray-900 border border-emerald-500/30 flex flex-col items-center justify-center p-3 text-center">
             <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80" class="w-8 h-8 rounded-full object-cover mb-1 border border-emerald-400">
             <span class="font-bold text-xs text-white">${song.name}</span>
-            <span class="text-[9px] text-gray-400 uppercase mt-1">Nano 01 Secure Pass</span>
+            <span class="text-[9px] text-gray-400 uppercase mt-1">Nano 01 Voice Pass</span>
           </div>
           <div class="flex justify-between items-center pt-2 border-t border-gray-800 text-xs">
             <button onclick="likeCard(${index})" class="text-emerald-400 hover:text-emerald-300 flex items-center space-x-1 transition-all">
-              <i class="fa-solid fa-heart"></i> <span id="like-count-${index}">19</span> Curtidas
+              <i class="fa-solid fa-heart"></i> <span id="like-count-${index}">21</span> Curtidas
             </button>
             <button onclick="selectAndPlaySong('${matchedSong.name}', '${matchedSong.link}')" class="px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-[10px] font-medium transition-all flex items-center space-x-1 shadow">
               <i class="fa-solid fa-play"></i><span>Ouvir Música</span>
@@ -492,7 +517,7 @@ async function publishToCommunity() {
     const { error } = await supabaseClient
       .from('songs')
       .insert([
-        { name: songName + ' (' + author + ')', genre: 'Secure Fan Edition' }
+        { name: songName + ' (' + author + ')', genre: 'Voice Indexed Edition' }
       ]);
 
     if (error) {
@@ -500,7 +525,7 @@ async function publishToCommunity() {
       return;
     }
 
-    alert("Publicado com sucesso no Mural Global Seguro!");
+    alert("Publicado com sucesso no Mural Global!");
     fetchCommunityFeed();
     switchTab('community');
   } catch (err) {
