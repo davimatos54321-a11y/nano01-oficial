@@ -70,15 +70,15 @@ tailwind.config = {
 
 <main class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-  <!-- ABA 1: CATÁLOGO E STREAMING -->
+  <!-- ABA 1: CATÁLOGO COMPLETO -->
   <div id="tab-home" class="space-y-6">
     <div class="bg-nexus-card border border-nexus-border rounded-2xl p-6 md:p-8 shadow-2xl space-y-6">
       <div class="flex flex-col sm:flex-row items-center justify-between pb-6 border-b border-gray-800 gap-4">
         <div>
           <h2 class="text-2xl font-bold text-white flex items-center">
-            <i class="fa-solid fa-radio mr-3 text-emerald-400 animate-pulse"></i> Repertório Oficial & Plataformas
+            <i class="fa-solid fa-radio mr-3 text-emerald-400 animate-pulse"></i> Repertório Oficial Completo
           </h2>
-          <p class="text-sm text-gray-400 mt-1">Ouça as faixas do Nano 01 no Spotify, Apple Music, Amazon Music e escolha sua favorita.</p>
+          <p class="text-sm text-gray-400 mt-1">Explore todas as obras independentes do Nano 01 e escolha sua faixa para criar conteúdo.</p>
         </div>
         <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-500/25">Level Gold // Verified</span>
       </div>
@@ -91,7 +91,7 @@ tailwind.config = {
             <div class="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px] pointer-events-none opacity-40"></div>
             <div class="absolute bottom-3 left-3 right-3 flex justify-between items-center">
               <span class="text-[10px] font-mono tracking-widest text-emerald-300 bg-gray-950/90 px-2.5 py-1 rounded border border-emerald-500/40">
-                <i class="fa-solid fa-circle text-[8px] text-emerald-400 animate-ping mr-1"></i> NANO 01 OFFICIAL
+                <i class="fa-solid fa-circle text-[8px] text-emerald-400 animate-ping mr-1"></i> CATALOG ACTIVE
               </span>
             </div>
           </div>
@@ -101,10 +101,10 @@ tailwind.config = {
         <div class="lg:col-span-7 space-y-4">
           <div class="flex items-center space-x-2 bg-gray-900 border border-gray-700 rounded-xl p-2">
             <i class="fa-solid fa-magnifying-glass text-emerald-400 pl-2"></i>
-            <input type="text" id="music-search-input" placeholder="Pesquisar música no catálogo do Nano 01..." class="flex-1 bg-transparent border-none text-sm text-white focus:outline-none px-2" oninput="filterCatalog()">
+            <input type="text" id="music-search-input" placeholder="Pesquisar no catálogo do Nano 01..." class="flex-1 bg-transparent border-none text-sm text-white focus:outline-none px-2" oninput="filterCatalog()">
           </div>
 
-          <div id="search-results" class="grid grid-cols-1 gap-2 max-h-64 overflow-y-auto pr-1"></div>
+          <div id="search-results" class="grid grid-cols-1 gap-2 max-h-72 overflow-y-auto pr-1"></div>
         </div>
       </div>
     </div>
@@ -128,9 +128,9 @@ tailwind.config = {
           </div>
 
           <div class="space-y-2">
-            <label class="block text-xs font-medium text-gray-400">Escolha a Música do Nano 01:</label>
+            <label class="block text-xs font-medium text-gray-400">Escolha a Música:</label>
             <select id="creator-song" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-3 text-sm text-white" onchange="previewCreationCard()">
-              <!-- Preenchido dinamicamente -->
+              <!-- Preenchido via Script -->
             </select>
           </div>
 
@@ -192,7 +192,7 @@ tailwind.config = {
           <h2 class="text-2xl font-bold text-white flex items-center">
             <i class="fa-solid fa-users mr-3 text-emerald-400"></i> Mural Global dos Fãs
           </h2>
-          <p class="text-sm text-gray-400 mt-1">Criações e interações publicadas em tempo real na nuvem.</p>
+          <p class="text-sm text-gray-400 mt-1">Criações e interações salvas em tempo real no banco de dados.</p>
         </div>
         <button onclick="switchTab('creator')" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold transition-all">
           + Criar Minha Arte
@@ -211,16 +211,16 @@ tailwind.config = {
 <div class="fixed bottom-0 inset-x-0 bg-gray-950 border-t border-nexus-border p-3 z-50 flex items-center justify-between max-w-5xl mx-auto rounded-t-2xl shadow-2xl">
   <div class="flex items-center space-x-3">
     <div class="w-10 h-10 rounded-lg bg-emerald-600/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
-      <i class="fa-solid fa-compact-disc animate-spin-slow"></i>
+      <i class="fa-solid fa-compact-disc animate-spin"></i>
     </div>
     <div>
-      <h4 class="text-xs font-bold text-white" id="player-status-title">Nano 01 - Streaming Oficial</h4>
-      <p class="text-[10px] text-emerald-400">Spotify, Apple Music & DistroKid</p>
+      <h4 class="text-xs font-bold text-white">Nano 01 - Catálogo Oficial</h4>
+      <p class="text-[10px] text-emerald-400">Streaming & Creator Hub</p>
     </div>
   </div>
   <div class="flex items-center space-x-2">
-    <a href="https://distrokid.com/hyperfollow/nano01" target="_blank" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-medium transition-all shadow flex items-center space-x-1">
-      <i class="fa-solid fa-play"></i> <span>Ouvir Catálogo Completo</span>
+    <a href="https://distrokid.com/hyperfollow/nano01/nano01" target="_blank" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-medium transition-all shadow flex items-center space-x-1">
+      <i class="fa-solid fa-play"></i> <span>Ouvir Artista</span>
     </a>
   </div>
 </div>
@@ -230,17 +230,89 @@ const SUPABASE_URL = 'https://ntdtwrqtjbhshlwjwdgi.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_aJLgcDU4wygZgab9-PqNpA_1tPYcx_U';
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-// CATÁLOGO OFICIAL EXCLUSIVO NANO 01 COM LINKS DE STREAMING
+// CATÁLOGO COMPLETO COM TODOS OS SEUS LINKS OFICIAIS
 const officialCatalog = [
-  { name: 'Chora no 22 bebê', genre: 'Urbano / Piseiro', link: 'https://distrokid.com' },
-  { name: 'Questão de tempo', genre: 'Boom Bap Rap', link: 'https://distrokid.com' },
-  { name: 'O papagaio bêbado e o jupará', genre: 'Brega / Divertido', link: 'https://distrokid.com' },
-  { name: 'O poste mijando no cachorro', genre: 'Urbano', link: 'https://distrokid.com' },
-  { name: 'Pix da patroa', genre: 'Trap', link: 'https://distrokid.com' },
-  { name: 'Flash & Fame', genre: 'Eletrônica', link: 'https://distrokid.com' },
-  { name: 'Neblina na pista', genre: 'Independente', link: 'https://distrokid.com' },
-  { name: 'AMOR DIVIDINDO', genre: 'Sertanejo', link: 'https://distrokid.com' },
-  { name: 'Hoje eu vou beber', genre: 'Modão', link: 'https://distrokid.com' }
+  { name: 'Echoes of the Street', link: 'https://distrokid.com/hyperfollow/nano01/echoes-of-the-street' },
+  { name: 'Concrete Echoes', link: 'https://distrokid.com/hyperfollow/nano01/concrete-echoes' },
+  { name: 'Empty Pavement', link: 'https://distrokid.com/hyperfollow/nano01/empty-pavement' },
+  { name: 'OFFLINE BABY', link: 'https://distrokid.com/hyperfollow/nano01/offline-baby' },
+  { name: 'Flash & Fame', link: 'https://distrokid.com/hyperfollow/nano01/flash--fame' },
+  { name: 'Quebrando a Ilusão', link: 'https://distrokid.com/hyperfollow/nano01/quebrando-a-ilusao' },
+  { name: 'The Street Lamp Pissing on the Dog', link: 'https://distrokid.com/hyperfollow/nano01/the-street-lamp-pissing-on-the-dog' },
+  { name: 'O papagaio bêbado e o jupará', link: 'https://distrokid.com/hyperfollow/nano01/o-papagaio-bbado-e-o-jupar' },
+  { name: 'Chora no 22 bebê', link: 'https://distrokid.com/hyperfollow/nano01/chora-no-22-beb' },
+  { name: 'O poste mijando no cachorro', link: 'https://distrokid.com/hyperfollow/nano01/o-poste-mijando-no-cachorro' },
+  { name: 'Grito de um amor proibido', link: 'https://distrokid.com/hyperfollow/nano01/grito-de-um-amor-proibido' },
+  { name: 'AMOR DIVIDINDO', link: 'https://distrokid.com/hyperfollow/nano01/amor-dividindo' },
+  { name: 'O FANTASMA DA NOVINHA', link: 'https://distrokid.com/hyperfollow/nano01/o-fantasma-da-novinha' },
+  { name: 'THE SOUL OF THE PEOPLE', link: 'https://distrokid.com/hyperfollow/nano01/the-soul-of-the-people' },
+  { name: 'A ALMA DO POVO', link: 'https://distrokid.com/hyperfollow/nano01/a-alma-do-povo' },
+  { name: 'SOBERANIA', link: 'https://distrokid.com/hyperfollow/nano01/soberania' },
+  { name: 'SER PAI NÃO TEM MANUAL', link: 'https://distrokid.com/hyperfollow/nano01/ser-pai-no-tem-manual' },
+  { name: 'A LETRA E MINHA', link: 'https://distrokid.com/hyperfollow/nano01/a-letra-e-minha' },
+  { name: 'O DINOSSAURO', link: 'https://distrokid.com/hyperfollow/nano01/o-dinossauro' },
+  { name: 'IA NÃO TEM ALMA', link: 'https://distrokid.com/hyperfollow/nano01/ia-no-tem-alma' },
+  { name: 'Sinfonia binária', link: 'https://distrokid.com/hyperfollow/nano01/sinfonia-binria' },
+  { name: 'Sem Atalho', link: 'https://distrokid.com/hyperfollow/nano01/sem-atalho' },
+  { name: 'Dono do meu tempo', link: 'https://distrokid.com/hyperfollow/nano01/dono-do-meu-tempo' },
+  { name: 'Clean Aesthetic', link: 'https://distrokid.com/hyperfollow/nano01/clean-aesthetic' },
+  { name: 'Friday Night Vision', link: 'https://distrokid.com/hyperfollow/nano01/friday-night-vision' },
+  { name: 'Pix da patroa', link: 'https://distrokid.com/hyperfollow/nano01/pix-da-patroa' },
+  { name: 'QUEM CANTAR RAP TAMBÉM AMA', link: 'https://distrokid.com/hyperfollow/nano01/quem-cantar-rap-tambm-ama' },
+  { name: 'O CORRE NÃO ESPERA', link: 'https://distrokid.com/hyperfollow/nano01/o-corre-no-espera' },
+  { name: 'O FUTURO É VOCÊ', link: 'https://distrokid.com/hyperfollow/nano01/o-futuro-e-voc' },
+  { name: 'DOUTOR DA QUEBRADA', link: 'https://distrokid.com/hyperfollow/nano01/doutor-da-quebrada' },
+  { name: 'CÓDIGO FRATURADO', link: 'https://distrokid.com/hyperfollow/nano01/cdigo-fraturado' },
+  { name: 'PROTOCOLO DE HONRA', link: 'https://distrokid.com/hyperfollow/nano01/protocolo-de-honra' },
+  { name: 'PROTOCOLO DE RETORNO', link: 'https://distrokid.com/hyperfollow/nano01/protocolo-de-retorno' },
+  { name: 'PROTOCOLO DE DISTÂNCIA', link: 'https://distrokid.com/hyperfollow/nano01/protocolo-de-distncia' },
+  { name: 'PROTOCOLO AMARELO', link: 'https://distrokid.com/hyperfollow/nano01/protocolo-amarelo' },
+  { name: 'Modão sertanejo', link: 'https://distrokid.com/hyperfollow/nano01/modo-sertanejo' },
+  { name: 'Hoje eu vou beber', link: 'https://distrokid.com/hyperfollow/nano01/hoje-eu-vou-beber' },
+  { name: 'O Gole do esquecimento', link: 'https://distrokid.com/hyperfollow/nano01/o-gole-do-esquecimento' },
+  { name: 'O fantasma do lar', link: 'https://distrokid.com/hyperfollow/nano01/o-fantasma-do-lar' },
+  { name: 'A caminhada', link: 'https://distrokid.com/hyperfollow/nano01/a-caminhada' },
+  { name: 'United We Rise', link: 'https://distrokid.com/hyperfollow/nano01/united-we-rise' },
+  { name: 'Questão de tempo', link: 'https://distrokid.com/hyperfollow/nano01/questo-de-tempo' },
+  { name: 'Doi de mais', link: 'https://distrokid.com/hyperfollow/nano01/doi-de-mais' },
+  { name: 'Frutinha', link: 'https://distrokid.com/hyperfollow/nano01/frutinha' },
+  { name: 'Ponte pro amanhecer', link: 'https://distrokid.com/hyperfollow/nano01/ponte-pro-amanhecer' },
+  { name: 'Midnight Canvas', link: 'https://distrokid.com/hyperfollow/nano01/midnight-canvas' },
+  { name: 'ESTILO PRUDENTE', link: 'https://distrokid.com/hyperfollow/nano01/estilo-prudente' },
+  { name: 'Piseiro noel', link: 'https://distrokid.com/hyperfollow/nano01/piseiro-noel' },
+  { name: 'O prejuízo ta pago', link: 'https://distrokid.com/hyperfollow/nano01/o-prejuizo-ta-pago' },
+  { name: 'Eu não beijo ex', link: 'https://distrokid.com/hyperfollow/nano01/eu-no-beijo-ex' },
+  { name: 'Canto seguro', link: 'https://distrokid.com/hyperfollow/nano01/canto-seguro' },
+  { name: 'Coração embriagado', link: 'https://distrokid.com/hyperfollow/nano01/corao-embriagado' },
+  { name: 'Painel eletrônico', link: 'https://distrokid.com/hyperfollow/nano01/painel-eletrnico-2' },
+  { name: 'Nova batida', link: 'https://distrokid.com/hyperfollow/nano01/nova-batida' },
+  { name: 'The chicago shift', link: 'https://distrokid.com/hyperfollow/nano01/the-chicago-shift' },
+  { name: 'Pãozinho de mel', link: 'https://distrokid.com/hyperfollow/nano01/paozinho-de-mel' },
+  { name: 'Ema da Bahia', link: 'https://distrokid.com/hyperfollow/nano01/ema-da-bahia' },
+  { name: 'Neblina na pista', link: 'https://distrokid.com/hyperfollow/nano01/neblina-na-pista' },
+  { name: 'Upgrade', link: 'https://distrokid.com/hyperfollow/nano01/upgrade' },
+  { name: 'Glow up', link: 'https://distrokid.com/hyperfollow/nano01/glow-up' },
+  { name: 'Saldo negativo', link: 'https://distrokid.com/hyperfollow/nano01/saldo-negativo' },
+  { name: 'Onde o fole mora', link: 'https://distrokid.com/hyperfollow/nano01/onde-o-fole-mora' },
+  { name: 'Ritmo da roça', link: 'https://distrokid.com/hyperfollow/nano01/ritmo-da-roca' },
+  { name: 'São João', link: 'https://distrokid.com/hyperfollow/nano01/so-joo' },
+  { name: 'O Gâmbi pegou a ema do bahia', link: 'https://distrokid.com/hyperfollow/nano01/o-gmbi-pegou-a-ema-do-bahia' },
+  { name: 'O luxo da rua', link: 'https://distrokid.com/hyperfollow/nano01/o-luxo-da-rua' },
+  { name: 'Fora do jogo', link: 'https://distrokid.com/hyperfollow/nano01/fora-do-jogo' },
+  { name: 'Vitrine de vidro', link: 'https://distrokid.com/hyperfollow/nano01/vitrine-de-vidro' },
+  { name: 'Máquina absoluta', link: 'https://distrokid.com/hyperfollow/nano01/mquina-absoluta' },
+  { name: 'Chamego do peão', link: 'https://distrokid.com/hyperfollow/nano01/chamego-do-peo' },
+  { name: 'Código provado', link: 'https://distrokid.com/hyperfollow/nano01/cdigo-provado' },
+  { name: 'The useless one', link: 'https://distrokid.com/hyperfollow/nano01/the-useless-one' },
+  { name: 'O inútil', link: 'https://distrokid.com/hyperfollow/nano01/o-intil' },
+  { name: 'The radio and the hoe', link: 'https://distrokid.com/hyperfollow/nano01/the-radio-and-the-hoe' },
+  { name: 'O rádio é a enxada', link: 'https://distrokid.com/hyperfollow/nano01/o-rdio-e-a-enxada' },
+  { name: 'Stellar Sovereignty', link: 'https://distrokid.com/hyperfollow/nano01/stellar-sovereignty' },
+  { name: 'Soberania estelar', link: 'https://distrokid.com/hyperfollow/nano01/soberania-estelar' },
+  { name: 'Oxigênio', link: 'https://distrokid.com/hyperfollow/nano01/oxigenio' },
+  { name: 'OXYGEN', link: 'https://distrokid.com/hyperfollow/nano01/oxygen' },
+  { name: 'The Vision Is Clear', link: 'https://distrokid.com/hyperfollow/nano01/the-vision-is-clear' },
+  { name: 'Nano01', link: 'https://distrokid.com/hyperfollow/nano01/nano01' }
 ];
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -274,12 +346,12 @@ function renderCatalog(songs) {
       <div class="bg-gray-900 border border-gray-800 rounded-xl p-3 flex items-center justify-between hover:border-emerald-500/50 transition-all">
         <div>
           <h4 class="font-bold text-white text-xs">${song.name}</h4>
-          <p class="text-[10px] text-emerald-400">${song.genre} // Nano 01</p>
+          <p class="text-[10px] text-emerald-400">Nano 01 // Oficial</p>
         </div>
         <div class="flex items-center space-x-2">
-          <button onclick="playOfficialSong('${song.name}')" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-[10px] font-medium transition-all flex items-center space-x-1">
-            <i class="fa-solid fa-play"></i><span>Ouvir Oficial</span>
-          </button>
+          <a href="${song.link}" target="_blank" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-[10px] font-medium transition-all flex items-center space-x-1">
+            <i class="fa-solid fa-play"></i><span>Ouvir</span>
+          </a>
           <button onclick="sendToStudio('${song.name}')" class="px-2.5 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg text-[10px] transition-all" title="Criar Card">
             <i class="fa-solid fa-palette"></i>
           </button>
@@ -304,16 +376,8 @@ function updateSongSelect(songs) {
 
 function filterCatalog() {
   const input = document.getElementById('music-search-input').value.toLowerCase();
-  const filtered = officialCatalog.filter(s => s.name.toLowerCase().includes(input) || s.genre.toLowerCase().includes(input));
+  const filtered = officialCatalog.filter(s => s.name.toLowerCase().includes(input));
   renderCatalog(filtered);
-}
-
-function playOfficialSong(songName) {
-  const titleEl = document.getElementById('player-status-title');
-  if(titleEl) titleEl.innerText = 'Tocando: ' + songName;
-  
-  // Abre o streaming oficial garantindo que é exclusivamente do Nano 01
-  window.open('https://distrokid.com/hyperfollow/nano01', '_blank');
 }
 
 function sendToStudio(songName) {
@@ -343,7 +407,7 @@ function shareToSocial(platform) {
   const songSelect = document.getElementById('creator-song');
   const author = nameInput && nameInput.value.trim() ? nameInput.value.trim() : "Nano01";
   const song = songSelect ? songSelect.value : "Chora no 22 bebê";
-  const text = '🔥 Curtindo o som "' + song + '" criado por @' + author + ' no Estúdio Oficial do Nano 01! Ouça nas plataformas: https://distrokid.com/hyperfollow/nano01 #Nano01';
+  const text = '🔥 Curtindo o som "' + song + '" criado por @' + author + ' no Estúdio Oficial do Nano 01! Confira todas as faixas e crie sua arte também!';
 
   if (platform === 'whatsapp') {
     window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(text), '_blank');
@@ -352,11 +416,11 @@ function shareToSocial(platform) {
       navigator.share({
         title: 'Nano 01 Social Studio',
         text: text,
-        url: 'https://distrokid.com/hyperfollow/nano01'
+        url: window.location.href
       }).catch(() => {});
     } else {
       navigator.clipboard.writeText(text);
-      alert("Legenda e link oficial copiados com sucesso para a área de transferência!");
+      alert("Legenda copiada com sucesso para a área de transferência!");
     }
   }
 }
@@ -383,7 +447,7 @@ async function fetchCommunityFeed() {
           <div class="h-28 rounded-lg bg-gradient-to-tr from-emerald-950 to-gray-900 border border-emerald-500/30 flex flex-col items-center justify-center p-3 text-center">
             <img src="1000217500.jpg" class="w-8 h-8 rounded-full object-cover mb-1 border border-emerald-400">
             <span class="font-bold text-xs text-white">${song.name}</span>
-            <span class="text-[9px] text-gray-400 uppercase mt-1">Nano 01 Oficial</span>
+            <span class="text-[9px] text-gray-400 uppercase mt-1">Nano 01 Official</span>
           </div>
         </div>
       `;
