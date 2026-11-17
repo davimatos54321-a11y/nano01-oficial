@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nano 01 // Official Creator Studio & Audio Hub</title>
 
+<!-- METATAGS SOCIAIS PARA FACEBOOK E INSTAGRAM -->
+<meta property="og:title" content="Nano 01 // Official Creator Studio">
+<meta property="og:description" content="Ouça as produções independentes e crie seu card exclusivo do Nano 01!">
+<meta property="og:image" content="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80">
+<meta property="og:url" content="https://davimatos54321-a11y.github.io/nano01-oficial/">
+
 <!-- HEADERS DE SEGURANÇA MÁXIMA -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.jsdelivr.net https://cdn.tailwindcss.com https://cdnjs.cloudflare.com https://fonts.googleapis.com https://fonts.gstatic.com *.supabase.co; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: https:; connect-src 'self' https://*.supabase.co;">
 <meta http-equiv="X-Frame-Options" content="DENY">
@@ -70,15 +76,15 @@ tailwind.config = {
 
 <main class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-  <!-- ABA 1: CATÁLOGO PRINCIPAL -->
+  <!-- ABA 1: CATÁLOGO DE MÚSICAS -->
   <div id="tab-home" class="space-y-6">
     <div class="bg-nexus-card border border-nexus-border rounded-2xl p-6 md:p-8 shadow-2xl space-y-6">
       <div class="flex flex-col sm:flex-row items-center justify-between pb-6 border-b border-gray-800 gap-4">
         <div>
           <h2 class="text-2xl font-bold text-white flex items-center">
-            <i class="fa-solid fa-radio mr-3 text-emerald-400 animate-pulse"></i> Catálogo Oficial & Streaming
+            <i class="fa-solid fa-radio mr-3 text-emerald-400 animate-pulse"></i> Repertório Oficial & Streaming
           </h2>
-          <p class="text-sm text-gray-400 mt-1">Clique em "Ouvir" para reproduzir sua faixa diretamente nas plataformas oficiais.</p>
+          <p class="text-sm text-gray-400 mt-1">Ouça as faixas oficiais do Nano 01 e crie seu card personalizado.</p>
         </div>
         <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-500/25">Level Gold // Verified</span>
       </div>
@@ -135,7 +141,7 @@ tailwind.config = {
           </div>
 
           <div class="space-y-2 pt-2">
-            <label class="block text-xs font-medium text-emerald-400">Compartilhar nas Redes:</label>
+            <label class="block text-xs font-medium text-emerald-400">Compartilhar Música nas Redes:</label>
             <div class="grid grid-cols-2 gap-2">
               <button onclick="shareToSocial('whatsapp')" class="py-3 px-3 bg-green-600/20 hover:bg-green-600/40 text-green-400 border border-green-500/30 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-2">
                 <i class="fa-brands fa-whatsapp text-sm"></i><span>WhatsApp</span>
@@ -184,15 +190,15 @@ tailwind.config = {
     </div>
   </div>
 
-  <!-- ABA 3: MURAL GLOBAL -->
+  <!-- ABA 3: MURAL GLOBAL INTERATIVO -->
   <div id="tab-community" class="space-y-6 hidden">
     <div class="bg-nexus-card border border-nexus-border rounded-2xl p-6 md:p-8 shadow-2xl space-y-6">
       <div class="flex items-center justify-between pb-4 border-b border-gray-800">
         <div>
           <h2 class="text-2xl font-bold text-white flex items-center">
-            <i class="fa-solid fa-users mr-3 text-emerald-400"></i> Mural Global dos Fãs
+            <i class="fa-solid fa-users mr-3 text-emerald-400"></i> Mural Global dos Fãs (Interativo)
           </h2>
-          <p class="text-sm text-gray-400 mt-1">Criações e interações salvas em tempo real no banco de dados.</p>
+          <p class="text-sm text-gray-400 mt-1">Interaja, curta e visualize as criações publicadas em tempo real.</p>
         </div>
         <button onclick="switchTab('creator')" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold transition-all">
           + Criar Minha Arte
@@ -200,7 +206,7 @@ tailwind.config = {
       </div>
 
       <div id="community-feed" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        <!-- Preenchido via Supabase -->
+        <!-- Preenchido dinamicamente com interatividade -->
       </div>
     </div>
   </div>
@@ -230,7 +236,6 @@ const SUPABASE_URL = 'https://ntdtwrqtjbhshlwjwdgi.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_aJLgcDU4wygZgab9-PqNpA_1tPYcx_U';
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-// CATÁLOGO PRINCIPAL COM OS LINKS OFICIAIS EXATOS
 const officialCatalog = [
   { name: 'O poste mijando no cachorro', link: 'https://distrokid.com/hyperfollow/nano01/o-poste-mijando-no-cachorro' },
   { name: 'Pix da patroa', link: 'https://distrokid.com/hyperfollow/nano01/pix-da-patroa' },
@@ -355,20 +360,25 @@ function shareToSocial(platform) {
   const songSelect = document.getElementById('creator-song');
   const author = nameInput && nameInput.value.trim() ? nameInput.value.trim() : "Nano01";
   const song = songSelect ? songSelect.value : "Chora no 22 bebê";
-  const text = '🔥 Curtindo o som "' + song + '" criado por @' + author + ' no Estúdio Oficial do Nano 01! Acesse e ouça agora!';
+  
+  // Encontra o link da música escolhida para o compartilhamento focar na música
+  const foundSong = officialCatalog.find(s => s.name === song);
+  const songLink = foundSong ? foundSong.link : 'https://distrokid.com/hyperfollow/nano01';
+
+  const text = '🎵 Ouça agora a faixa "' + song + '" de Nano 01 (Criado por @' + author + '): ' + songLink;
 
   if (platform === 'whatsapp') {
     window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(text), '_blank');
   } else {
     if (navigator.share) {
       navigator.share({
-        title: 'Nano 01 Social Studio',
+        title: 'Nano 01 - ' + song,
         text: text,
-        url: window.location.href
+        url: songLink
       }).catch(() => {});
     } else {
       navigator.clipboard.writeText(text);
-      alert("Legenda copiada com sucesso para a área de transferência!");
+      alert("Link da música e legenda copiados com sucesso!");
     }
   }
 }
@@ -385,17 +395,23 @@ async function fetchCommunityFeed() {
     }
 
     let feedHtml = '';
-    data.forEach((song) => {
+    data.forEach((song, index) => {
       feedHtml += `
-        <div class="bg-gray-900 border border-gray-800 rounded-xl p-4 space-y-3 shadow-lg">
+        <div class="bg-gray-900 border border-gray-800 rounded-xl p-4 space-y-3 shadow-lg hover:border-emerald-500/40 transition-all">
           <div class="flex justify-between items-center text-[10px] font-mono text-emerald-400">
-            <span>@Nano01_Cloud</span>
-            <span>Online</span>
+            <span>@Fan_Community</span>
+            <span class="bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30">Ativo</span>
           </div>
           <div class="h-28 rounded-lg bg-gradient-to-tr from-emerald-950 to-gray-900 border border-emerald-500/30 flex flex-col items-center justify-center p-3 text-center">
             <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80" class="w-8 h-8 rounded-full object-cover mb-1 border border-emerald-400">
             <span class="font-bold text-xs text-white">${song.name}</span>
-            <span class="text-[9px] text-gray-400 uppercase mt-1">Nano 01 Featured</span>
+            <span class="text-[9px] text-gray-400 uppercase mt-1">Nano 01 Official Fan Pass</span>
+          </div>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-800 text-xs">
+            <button onclick="likeCard(${index})" class="text-emerald-400 hover:text-emerald-300 flex items-center space-x-1 transition-all">
+              <i class="fa-solid fa-heart"></i> <span id="like-count-${index}">12</span> Curtidas
+            </button>
+            <a href="https://distrokid.com/hyperfollow/nano01" target="_blank" class="text-xs text-gray-400 hover:text-white underline">Ouvir Faixa</a>
           </div>
         </div>
       `;
@@ -403,6 +419,17 @@ async function fetchCommunityFeed() {
     communityFeed.innerHTML = feedHtml;
   } catch (err) {
     console.error('Erro:', err);
+  }
+}
+
+function likeCard(index) {
+  const countEl = document.getElementById('like-count-' + index);
+  if(countEl) {
+    let current = parseInt(countEl.innerText);
+    countEl.innerText = current + 1;
+    // Feedback visual animado
+    countEl.classList.add('text-pink-500', 'scale-110');
+    setTimeout(() => countEl.classList.remove('scale-110'), 300);
   }
 }
 
@@ -416,7 +443,7 @@ async function publishToCommunity() {
     const { error } = await supabaseClient
       .from('songs')
       .insert([
-        { name: songName + ' (' + author + ')', genre: 'Featured Fan Edition' }
+        { name: songName + ' (' + author + ')', genre: 'Official Fan Edition' }
       ]);
 
     if (error) {
